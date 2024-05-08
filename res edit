@@ -1,0 +1,101 @@
+Sai Abhishek
+Email: abhishekreddy.aalla@gmail.com 	Mobile: 9866162389
+Address: Vijayawada, Andhra Pradesh	LinkedIn: https://www.linkedin.com/in/abhishek- reddy-85bb51129/
+ 						
+OBJECTIVE
+
+To pursue a challenging and satisfying career in the industry and to prove myself as a dedicative and worthy software engineer in a progressive organization that provide me an ambience to apply and enhance my knowledge and skills and be a member of team that dynamically works towards the success and the growth of the organization.
+
+
+EXPERIENCE SUMMARY
+
+▪	1.5 years of experience in development project in DevOps and Cloud technology(AWS,Azure)
+▪	2.5 years of experience in  .Net Domain.
+▪	Experience in implementing the CI/CD pipeline of applications using Jenkins/Azure Pipelines.
+▪	Have hands on experience in creating infra using Terraform in AWS for the development project through Terraform state file
+▪	Experience in launching the application through docker containers/Ec2 instances 
+▪	Excellent team member with strong ability to balance project workload.
+
+
+CORE COMPETENCIES
+
+Technologies                   -	DevOps, Azure Devops, .NET
+DevOps tools                   - 	GitHub, Jenkins, Maven, Docker, 									Ansible, Terraform, Kubernetes, Mobaxterm
+Testing Tools                   -    SonarQube
+Operating Systems           -    Linux, Windows
+Programming Languages -    C#
+Databases                         -	MSSQL, MySQL,PostgreSql
+
+
+
+PROFESSIONALEXPERIENCE
+
+▪	Working as Software Engineer/Project Associate with Cognizant Technologies Pvt Ltd Hyderabad from 02/2022 – Present.
+
+▪	Worked as a Software Engineer at HakunaMatata Solutions Pvt Ltd Chennai from 01/2019 – 02/2022
+
+
+EDUCATIONAL PROFILE
+
+•	B E, Computer Science Engineering with 6.9 CGPA from KLUniversity.
+•	Intermediate with 82% from SriChaitanya Jr. College.
+•	Schooling with 8.5 CGPA from Akshara School.
+PROJECT DETAILS
+
+a) Project Name:  Online Boutique – 11 Tier-Architecture Project (Self - project)
+
+Project Scope: 
+This project is a cloud-first microservices demo application. Online Boutique consists    of an 11-tier microservices application. The application is a web-based e-commerce app where users can browse items, add them to the cart, and purchase them.
+			
+Responsibilities: 
+I created pipelines for deploying application into servers. Initially, I integrated SonarQube which is taken from community branch plugin which I got from github repo and has docker image pulled into pipeline. Then added docker which will build and push image into container registry (docker hub) for each microservice in pipeline. Created Kubernetes clusters(Dev, Prod) in Azure -AKS. Next, I created release Pipelines (Dev and prod deployment) and integrated with K8s. 
+Technologies and Tools: Azure Boards, Azure Repos, Azure Pipelines, Releases, SonarQube,                                           docker, AKS 
+
+
+b) Project Name:  BI Services(United Parcel Services), Netherlands
+
+Domain          :  Devops Engineer
+ Project Scope: 
+Project is related to European countries Audits and Reports generation. Project is mainly focused on Logistics which involves Shipment, rates per package based on weight and transport of the package. Applications developed or modernized by dev team  plays a major role in above mentioned things. Customers Will have a chance to check  the rates provided by UPS per shipment. All the data will be there in DWH and Our  applications pulls data and populates to SQL and some calculations are performed and projected in UI. These Applications deployed by me were very helpful for the business in having high availability with no downtime.
+Responsibilities: 
+I was involved in creating pipelines and deploying applications into production servers, creation/managing pods, Configuration management using Ansible, troubleshooting issues related to deployment, collaborating with development team for smooth deployment process.
+Technologies and Tools: Azure Boards, Azure Repos, Azure Pipelines, Releases, SonarQube, docker, AKS, Prometheus, Grafana.
+Duration: 02/2022 – Present
+
+
+
+c) Project Name:  Senzio
+
+Domain           :  DotNet Developer
+ Project Scope: 
+			Senszio is a custom suit and bespoke tailoring agent targeting United States, Europe, 			Hongkong and expanding further. This family business caters to 25K orders per year. 			They are presently using an ERP and multiple systems for their various operations 			increasing their manual work from system to system. They are looking forward to 			keeping their operation professionals to the minimum by having one app that could 			integrate or fulfill their needs.
+Responsibilities: 
+I was involved in developing .net core web api’s for different modules and unit testing and also involved in writing sql queries.
+
+Technologies and Tools: c#, .net core web api and DB – Postgresql
+
+Duration: 07/2021 – 02/2022
+
+
+c) Project Name:  Process Validation (Caterpiller)
+
+Domain           :  DotNet Developer
+ Project Scope: 
+The objective of Process Validation to sort out the issue of the operations in the project. Validation Engineer role can raise an issue like at which part of the machine has the defect and after fixing that there would be analysis.
+Responsibilities: 
+I was involved in developing .net core web api’s for different modules and unit testing and also involved in writing sql queries.
+
+Technologies and Tools: c#, .net core web api and DB – MSSQL
+Duration: 07/2019 – 02/2021
+
+ACHEIVEMENTS
+
+•	Devops certified engineer from Edureka.
+•	AZ-900 Fundamentals of Azure Certificate 17/11/2022.
+•	.NET Course in PathFront (06/2018 - 10/2018)
+Acheived a certificate on an attempt of exam on .NET which includes DAL,EF,JQuery,MSSQL
+
+DECLARATION
+
+I hereby assure that the above information is true to my knowledge, and I will prove to be worthy of your confidence and satisfaction.
+
