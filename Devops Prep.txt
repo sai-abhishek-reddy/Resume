@@ -1,0 +1,450 @@
+What is IAAS?
+
+Infrastructure As A Service (IAAS) is means of delivering computing infrastructure as on-demand services. It is one of the three fundamental cloud service models. The user purchases servers, software data center space, or network equipment and rent those resources through a fully outsourced, on-demand service model. It allows dynamic scaling and the resources are distributed as a service. It generally includes multiple-user on a single piece of hardware. 
+
+It totally depends upon the customer to choose its resources wisely and as per need. Also, it provides billing management too.
+
+Characteristics of IAAS (Infrastructure as a Service):
+IAAS is like renting virtual computers and storage space in the cloud.
+You have control over the operating systems, applications, and development frameworks.
+Scaling resources up or down is easy based on your needs.
+
+Example of IAAS (Infrastructure As A Service):
+Amazon Web Services
+Microsoft Azure
+Google Compute Engine
+Digital Ocean
+
+What is PAAS?
+Platform As A Service (PAAS) is a cloud delivery model for applications composed of services managed by a third party. It provides elastic scaling of your application which allows developers to build applications and services over the internet and the deployment models include public, private and hybrid. 
+
+Basically, it is a service where a third-party provider provides both software and hardware tools to the cloud computing. The tools which are provided are used by developers. PAAS is also known as Application PAAS. It helps us to organize and maintain useful applications and services. It has a well-equipped management system and is less expensive compared to IAAS.
+
+Characteristics of PAAS (Platform as a Service):
+PAAS is like a toolkit for developers to build and deploy applications without worrying about infrastructure.
+Provides pre-built tools, libraries, and development environments.
+Developers focus on building and managing applications, while the provider handles infrastructure management.
+It speeds up the development process and allows for easy collaboration among developers.
+
+Examples of PAAS (Platform as a Service)
+AWS Lambda
+Google App Engine
+Google Cloud
+IBM Cloud
+
+
+What is SAAS?
+Software As A Service (SAAS) allows users to run existing online applications and it is a model software that is deployed as a hosting service and is accessed over Output Rephrased/Re-written Text the internet or software delivery model during which software and its associated data are hosted centrally and accessed using their client, usually an online browser over the web. SAAS services are used for the development and deployment of modern applications. 
+
+It allows software and its functions to be accessed from anywhere with good internet connection device and a browser. An application is hosted centrally and also provides access to multiple users across various locations via the internet.
+
+Characteristics of SAAS (Software as a Service):
+Applications are ready to use, and updates and maintenance are handled by the provider.
+You access the software through a web browser or app, usually paying a subscription fee.
+It’s convenient and requires minimal technical expertise, ideal for non-technical users.
+
+Example of SAAS (Software as a Service):
+Salesforce
+Google Workspace apps
+Microsoft 365
+Trello
+Zoom
+Slack
+Adobe Creative Cloud
+
+*Diff between Statefull and Stateless
+      -	Stateful applications retain data between sessions, but stateless applications don't. For example, stateful applications remember products in a 	user's cart after logging out, while stateless applications treat every login as a new session and cart information is lost.
+
+*Statefull sets:	Like a Deployment, a StatefulSet manages Pods that are based on an identical container spec. Unlike a
+			Deployment, a StatefulSet maintains a sticky identity for each of their Pods. These pods are created from the
+			same spec, but are not interchangeable: each has a persistent identifier that it maintains across any
+			rescheduling.
+
+
+
+
+1.umask 022 sets the default permission for newly created files to 644 and
+  for directories to 755.
+
+-wget and curl are command-line tools used for downloading files from remote
+ servers.
+-Curl: Protocols Supported: HTTP/HTTPS, FTP, SFTP, SCP, IMAP, LDAP/LDAPS
+-wget: HTTP/HTTPS, FTP, and FTPS.
+-grep: used for searching and manipulating text patterns within files
+	-c: This prints only a count of the lines that match a pattern
+	–i: Ignores, case for matching
+	-l: Displays list of a filenames only.
+Example: grep -i "UNix" geekfile.txt
+	 grep -l "unix" * : Display the File Names that Matches the Pattern Using grep
+	 grep -o "unix" geekfile.txt: Displaying only the matched pattern Using grep
+- awk: awk is a versatile tool for text processing and reporting. It can also handle pattern
+       matching and manipulation.
+Example: Suppose you have a file named data.txt with the following content:
+John 25
+Alice 30
+Bob 28
+Eve 22
+
+You can use awk to print only the names of people who are older than 25:
+awk '$2 > 25 { print $1 }' data.txt
+
+Output:
+Alice
+Bob
+
+-Pipe: Piping commands involves sending the output of one command as the input to another command. This is achieved using the | (pipe) operator.
+
+Example 1: List files and directories, and then filter for specific files using grep: ls -l | grep ".txt"
+
+In this example, the ls -l command lists files and directories in long format, and the output is
+piped to grep to filter and display only the lines containing ".txt".
+
+Example 2: Count the number of lines in a file using wc:
+cat file.txt | wc -l
+Here, cat reads the content of the file, and its output is piped to wc -l, which counts the number
+of lines.
+
+2.Umask default value for root user is 022
+
+3.check open ports in linux - netstat -lntu
+
+4.Swap memory in linux is used when the amount of physical memory is full. Inactive pages in memory are moved to swap space where will have less RAM.
+
+------------------------------------------------------------Docker------------------------------------------------------------
+
+5.What is Docker Multi Stage build:
+
+Docker multi-stage build is a feature that allows you to have more than one FROM statement, each representing a stage in your Dockerfile. Each stage starts with a fresh image that can be used to perform specific tasks. With multi-stage Dockerfiles, you can also share data between build stages. This way, you can build the application in one stage and copy only the necessary components that the application needs to run to the final image, resulting in smaller and more optimized Docker images. 
+
+# First stage - Building the application
+# Use node:16-a;pine image as a parent image
+FROM node:16-alpine AS build
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Copy package.json files to the working directory
+COPY package*.json ./
+
+# Install app dependencies
+RUN npm install
+
+# Copy the source files
+COPY . .
+
+# Build the React app for production
+RUN npm run build
+
+# Second stage - Serve the application
+FROM nginx:alpine
+
+# Copy build files to Nginx
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+The Dockerfile now has two stages or steps (characterized by the FROM statements). This will create a two-stage build process: the first stage builds the React application, and the second stage will serve the built application using Nginx. The COPY command in the second stage copies the contents of the build directory from the first stage (alias "build") into the Nginx web server default directory. This sets up Nginx to serve your React application.
+
+*Diff between ENTRYPOINT and CDM
+        ENTRYPOINT is the process that's executed inside the container. CMD is the default set of arguments that are supplied to the ENTRYPOINT process.
+
+*What is Docker Compose, and why would you use it?
+	Docker Compose is a tool for defining and running multi-container
+	Docker applications. It simplifies the process of defining and
+	orchestrating containers.
+
+*Why are Docker volumes used?
+	Docker volumes provide persistent storage for containers, allowing
+	data to persist even if the container is stopped or removed.
+
+*Explain the difference between a bind mount and a Docker volume.
+	A bind mount links a directory on the host with a directory in the
+	container, while a Docker volume is a managed storage solution
+	created and maintained by Docker
+
+*How can you improve Docker container security?
+	Regularly update Docker and its components, use official images,
+	minimize the number of running processes, and apply the principle of
+	least privilege.
+
+*What is the purpose of Docker Content Trust?
+	Docker Content Trust ensures the integrity and authenticity of images
+	by signing them using digital signatures.
+
+*What is a Docker Registry?
+	A Docker Registry is a storage and distribution system for Docker
+	images. Docker Hub is a popular public registry
+
+* docker logs <container_id> - Used to check logs.
+
+*Explain the concept of blue-green deployment with Docker.
+	Blue-green deployment involves deploying a new version of an application alongside the existing one and 
+	switching traffic once the new version is deemed stable.
+	
+
+FROM 			Create a new build stage from a base image.
+RUN 			Execute build commands.
+MAINTAINER 		Specify the author of an image.
+COPY 			Copy files and directories.
+ADD 			Add local or remote files and directories.
+EXPOSE 			Describe which ports your application is listening on.
+WORKDIR 		Change working directory.
+CMD 			Specify default commands.
+ENTRYPOINTS 		Specify default executable.
+ENV 			Set environment variables.
+VOLUME 			Create volume mounts.
+USER 			Set user and group ID.
+LABEL 			Add metadata to an image.
+ONBUILD 		Specify instructions for when the image is used in a build.
+SHELL 			Set the default shell of an image.
+ARG 			Use build-time variables.
+HEALTHCHECK 		Check a container's health on startup.
+STOPSIGNAL 		Specify the system call signal for exiting a container.
+
+
+--------------------------------------------------Kubernetes------------------------------------------------------------
+
+*What is Kubernetes
+	- Is a Open-Source Container Orchestration Tool
+	- Used for all types of Container
+	- Used to ensure High Availability of Container
+	- Create the replicas of container
+	- Auto-Scaling/Load Balancing is possible
+
+*Terminoligies
+	- pods			--> Atomic unit of schedule in kubernetes
+	- kubectl		--> command line utility to interact with Kubernetes Master Node
+	- kubeadm 		--> command line utility to install and config the Kubernetes cluster
+	- cluster		--> Logical Collection of worknodes.
+
+*Deployment Controller Object		
+			- It is used to deploy the pods 
+			- It create Replicaset
+			- It used to upgrade 
+			- Roll-Back the changes 
+			- Scale up 
+			- Scale Down 
+
+*Rolling Update: Here upgrade can be done without any downtime.
+		 Rolling updates incrementally replace your resource's Pods with new ones, which are then scheduled on nodes with available resources. 			 Rolling updates are designed to update your workloads without downtime
+
+*Replica Sets:   A Replica Set's purpose is to maintain a stable set of replica Pods running at any given time.In replicasets there is a lot of properties 		 which helps replicasets to work properly. There is selector properties which helps replicasets to recreate the pods based on label when pod 		 failure happen, also helped to group the same label pods.
+		 There is one more properties called template that help RS to create pod according to the given pod template.
+		 Replicas properties is used to provide the number of desired pods to create.
+
+*Kubernetes Services 
+		- Nodeport 		: NodePort service in Kubernetes is a service that is used to expose the application to the internet from where the 					  end-users can access it. If you create a NodePort Service Kubernetes will assign the port within the range of 					  (30000-32767). The application can be accessed by end-users using the node’s IP address. 
+		- ClusterIp 		: used to internal communication between the pods.
+		- Load balancer		: The LoadBalancer Service provides load-balancing abilities for incoming traffic to distribute evenly across 						  multiple pods for better performance and high availability.
+
+*Ingress: 	An API object that manages external access to the services in a cluster. typically it works on http request.Ingress exposes HTTP and HTTPS 		routes from outside the cluster to services within the cluster. 
+
+*Daemenset		
+	It is used to deploy a copy of pod in all the available Workernodes.
+
+*Deployment
+	A Deployment ensures that a specified number of pod replicas are running at any
+	given time. It can also be used to roll out updates to applications.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: example-deployment
+spec:
+replicas: 3
+selector:
+ matchLabels:
+ app: example
+template:
+ metadata:
+ labels:
+ app: example
+ spec:
+ containers:
+ - name: example-container
+ image: nginx:latest
+ ports:
+ - containerPort: 80
+
+Explanation:
+• apiVersion: 	The version of the Kubernetes API to use.
+• kind: 	The type of resource (Deployment).
+• metadata: 	Data to help uniquely identify the object, including a name string.
+• spec: 	Specification of the desired behavior of the deployment.
+o replicas: 	The number of desired pod replicas.
+o selector: 	A label query to identify the set of pods.
+o template: 	The pod template describes the pods that will be created.
+▪ metadata: 	Labels for the pods.
+▪ spec: 	Specification for the container(s) in the pod.
+▪ containers:  A list of containers, each with a name, image, and port mappings.
+
+*Service
+	A Service provides a stable endpoint (IP address and port) to access a set of pods.
+
+apiVersion: v1
+kind: Service
+metadata:
+name: example-service
+spec:
+selector:
+ app: example
+ports:
+ - protocol: TCP
+ port: 80
+ targetPort: 80
+type: ClusterIP
+
+Explanation:
+• apiVersion: 	The version of the Kubernetes API to use.
+• kind: 	The type of resource (Service).
+• metadata: 	Data to help uniquely identify the object, including a name string.
+• spec: 	Specification of the desired behavior of the service.
+o selector: 	Selects the pods that the service will target.
+o ports: 	List of ports that the service will expose.
+▪ protocol: 	Protocol used by the service (TCP).
+▪ port: 	Port exposed by the service.
+▪ targetPort: 	Port on the container that the traffic will be directed to.
+o type: 	Type of service (ClusterIP is the default, providing an internal IP).
+
+*PersistentVolume (PV)
+	A PersistentVolume is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage 	Classes.
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+name: example-pv
+spec:
+capacity:
+ storage: 1Gi
+accessModes:
+ - ReadWriteOnce
+hostPath:
+ path: "/mnt/data"
+
+Explanation:
+• apiVersion: 	The version of the Kubernetes API to use.
+• kind: 	The type of resource (PersistentVolume).
+• metadata: 	Data to help uniquely identify the object, including a name string.
+• spec: 	Specification of the desired behavior of the PV.
+o capacity: 	Storage capacity of the volume.
+o accessModes:  The ways the volume can be accessed (ReadWriteOnce allows read/write by a single node).
+o hostPath: 	Path on the host node’s filesystem.
+
+*PersistentVolumeClaim (PVC)
+	A PersistentVolumeClaim is a request for storage by a user. It is similar to a pod.
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+name: example-pvc
+spec:
+accessModes:
+ - ReadWriteOnce
+resources:
+ requests:
+ storage: 1Gi
+
+Explanation:
+• apiVersion: 	The version of the Kubernetes API to use.
+• kind: 	The type of resource (PersistentVolumeClaim).
+• metadata: 	Data to help uniquely identify the object, including a name string.
+• spec: 	Specification of the desired behavior of the PVC.
+o accessModes: 	The ways the volume can be accessed.
+o resources: 	Specifies the resources required by the PVC.
+▪ requests: 	Minimum amount of storage requested.
+
+*Secret
+	A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key.
+
+apiVersion: v1
+kind: Secret
+metadata:
+name: example-secret
+type: Opaque
+data:
+username: YWRtaW4=
+password: MWYyZDFlMmU2N2Rm
+
+Explanation:
+• apiVersion: 	The version of the Kubernetes API to use.
+• kind: 	The type of resource (Secret).
+• metadata: 	Data to help uniquely identify the object, including a name string.
+• type: 	The type of secret (Opaque is a generic type).
+• data: 	The secret data, where each key must be base64 encoded.
+
+*ConfigMap
+	A ConfigMap is an API object used to store non-confidential data in key-value pairs.
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+name: example-configmap
+data:
+database_url: postgres://user:password@hostname:5432/database
+log_level: DEBUG
+
+Explanation:
+• apiVersion: 	The version of the Kubernetes API to use.
+• kind: 	The type of resource (ConfigMap).
+• metadata: 	Data to help uniquely identify the object, including a name string.
+• data: 	The configuration data, in key-value pairs.
+
+
+6.What is init container in kubernates
+
+Init Containers are containers that start and run to completion before starting the main containers in the pod. It acts as a preparatory step, allowing us to perform initialization tasks, configure prerequisites, or configure dependencies required by the application in the main containers.
+
+7.Create zip file in linux
+
+install zip and type zip <zip file>.
+
+8.What is ansible roles
+9.Folder structure of role 
+10. Jenkins master and slave
+11.How to create Service connection in Azure Devops:
+							Firstly, to connect to third party tools this is used. It will be under project settings and create 							new service connection and a REST call to external service is triggered to check call succeeded or 							not.
+
+12. How to Automate 3 tier structure using Terraform
+
+answer in this link - https://sheriffexcel.hashnode.dev/3-tier-architecture-on-aws-using-terraform
+
+13. What is VNet
+
+VNet stands for Virtual Network and is a fundamental building block to the private network in the cloud. It is a network or an environment that can be used to run virtual machines and applications in the cloud. When virtual machines and applications are created, they can communicate with one another securely.
+
+14.What are fault domains?
+
+A fault domain is a group of virtual machines that share a common power source and also network. Virtual machines in fault domains allow cloud providers to minimize hardware failures, power outages and also network disruptions. These fault domains are automatically distributed by the Azure platform
+
+15.What is the update domains feature and its benefits?
+
+Update domains are part of the Azure infrastructure and are responsible for managing and isolating hardware and software updates. When multiple virtual machines are designed, these update domains get automatically distributed using available sets. They can be rebooted or taken down for maintenance at the same time.
+
+16.What is the Dogpile effect and how can it be prevented?
+
+The Dogpile effect is the period after the cache expires and requests have been made on the website from the client. These subsequent requests lead to heavy or slow operations, such as database queries, which can lead to an excessive load on the database or overall service. The Dogpile effect typically happens in high-traffic websites and applications, in which a high increase in workload leads to a decrease in performance or downtime.
+
+17.Can you state the difference between Azure DevOps services and Azure DevOps servers?
+
+Azure DevOps services is a cloud-based service allowing organizations to make use of the Azure DevOps capabilities and features without the extra workload of setting up and maintaining their server infrastructure. The service is accessible from anywhere, goes through continuous updates, and is highly scalable.
+Azure DevOps server is on-premise and is on an SQL server backend, where organizations can host on their own servers. It has been specifically designed for organizations that prefer their data within their network due to compliance or other regulatory reasons.
+
+18.What is Azure Redis Cache?
+
+Redis is an open source in-memory data store that can be used as a database, cache, or message broker. It's often used for caching web pages and reducing the load on servers.
+
+19. Blue-Green Deployments
+	• Description: Implementing blue-green deployments to switch between two identical environments to ensure zero downtime during updates.
+	• Benefits: Ensures high availability, reduces risk during deployments, and allows easy rollback.
+    Canary Releases
+	• Description: Gradually rolling out new features to a small subset of users before full deployment using tools like Flagger or Argo Rollouts.
+	• Benefits: Minimizes risk, provides real-world testing, and ensures smooth feature rollouts
+
+20.Load Balancing
+	• Description: Distributing incoming traffic across multiple servers using tools like NGINX, HAProxy, or AWS Elastic Load Balancing.
+	• Benefits: Enhances reliability, improves performance, and ensures faulttolerance.
+
+21.SonarQube: It is a tool to check code quality check(like bugs, vulnerabilities,syntax error) and code coverage(test the functionality of code like 80% code/test cases are covered then 80% code coverage is done.)
+	*code coverage is dependent on test cases, so test cases execution happens before SonarQube.
+
+
