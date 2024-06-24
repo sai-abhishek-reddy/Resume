@@ -466,7 +466,44 @@ Access specifiers are keywords to specify the accessability of the class,method,
 * We can have only try block without catch block, but we should have finally block after try block.
 * difference between throw ex and throw is....throw will give more information about the error compared to throw ex.
 ---------------------------------------------
---we can't use 'this' in a static method because the keyword 'this' returns a reference to the current instance of the class containing it.
+* thiskeyword: this keyword is used to refer to the current instance of the class. It is used to access members from the constructors, instance methods, and instance accessors. this keyword is also used to track the instance which is invoked to perform some calculation or further processing related to that instance.
+
+// C# program for using 'this' keyword to
+// refer current class instance members
+using System;
+namespace geeksforgeeks {
+
+class Geeks {
+
+	// instance member
+	public string Name; 
+
+	public string GetName()
+	{
+		return Name;
+	}
+
+
+	public void SetName(string Name)
+	{
+		// referring to current instance
+		//"this.Name" refers to class member
+		this.Name = Name; 
+	}
+}
+
+class program { 
+
+	// Main Method
+	public static void Main()
+	{
+		Geeks obj = new Geeks();
+		obj.SetName("Geeksforgeeks");
+		Console.WriteLine(obj.GetName());
+	}
+}
+}
+
 ---------------------------------------------
 boxing & unboxing: 
 boxing and unboxing in c# allows developers to convert .net data types from value type to reference type and vice versa. converting a value type to a reference type is called called boxing in c# and converting a reference type to a value type is called unboxing in c#. 
@@ -784,7 +821,7 @@ ASP.NET MVC routing is a pattern matching system that is responsible for mapping
 ------------------------------------------------------------------------------------------------------------------------------------------------
 								ADO.NET/Entity Framework
 
-DataSet class	- it is a container which gets the data from one or more than one tablesfrom the database 
+DataSet class	- it is a container which gets the data from one or more than one tables from the database 
 DataReader	- it allows us to read data returned from select command. It is read only.
 DataAdapter	- it bridges the gap between the disconnected DataSet/DataTable objects and the physical database.
 
@@ -796,10 +833,13 @@ ORM: Object Relational Mapper	- it is used for mapping objects in our applicatio
 			Types: Entity Framework 
 			       Entity Framework core.
 			       Dapper
+
+Entity Framework Core 7.0 (EF Core 7)
+
 Entity Framework	- it is open source ORM.it is like wrapper on ADO.NET. it minimizes the coding effort.
 
 DBContext	- it is a class in EF that helps to create communication between database and domain/entity calss.
-DBSet		- it represents an entity set that can be used for create, read,updateand delete operations.
+DBSet		- it represents an entity set that can be used for create, read,update and delete operations.
 
 Types of approaches in EF:
 
@@ -920,6 +960,7 @@ JWT - JSON Web Tokens Authentication: it is atoken based authentication whete JW
 
 *JWT token resides in the request header where Key:Authorization and Value: Bearer token.
 
+*Sync is a single-thread, so only one operation or program will run at a time. Async is non-blocking, which means it will send multiple requests to a server. Sync is blocking — it will only send the server one request at a time and wait for that request to be answered by the server.
 ------------------------------------------------------------------------------------------------------------------------------------------------
 									.NET CORE
 
