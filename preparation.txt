@@ -1,0 +1,1266 @@
+									C#
+
+C# latest version is 12 released in 2023
+
+CLR: it manages the execution of the programes written in any language that uses .Net framework EX: c#,f#,VB.NET.it handles memory management     	and security.
+
+CTS: it has set of rules which state how a detatype should be declared,defined and used in program EX: int,string,double...etc.
+
+CLS: Common Language specification - subset of CTS, and it defines set of rules and restrictions that every language must follow. 
+
+*Just-in-time compilation converts the managed code into machine instructions which are then executed on the CPU of the computer.
+-----------------------------------------------
+Garbage Collection	- It manages the allocation and release of memory.All the unused objects will be released to free up the memory.It is 				  called automatically/or we can call by using below.
+			  GC.COLLECT() or DISPOSE()
+-----------------------------------------------
+Managed Code: 
+
+The code, which is developed in .NET framework, is known as managed code. This code is directly executed by CLR with help of managed code execution.Managed code uses CLR which in turns looks after your applications by managing memory, handling security, allowing cross - language debugging, and so on.
+
+UnManaged Code:
+
+The code, which is developed outside .NET, Framework is known as unmanaged code.Applications that do not run under the control of the CLR are said to be unmanaged, and certain languages such as C++ can be used to write such applications.Unmanaged code can be unmanaged source code and unmanaged compile code.Unmanaged code is executed with help of wrapper classes.
+-----------------------------------------------
+OOP concepts:
+
+there are mainly four pillars (features) of oop. if all of these four features are presented in programming, the programming is called  perfect object oriented programming.
+abstraction
+encapsulation
+inheritance
+polymorphism
+
+1. abstraction allows us to expose limited data and functionality of objects publicly and hide the actual implementation. it is the most important pillar in oops. in our example of mobile class and objects like nokia, samsung, iphone. 
+ex. some features of mobiles,dialing a number call some method internally which concatenate the numbers and displays it on screen but what is it doing we don’t know.clicking on green button actual send signals to calling person's mobile but we are unaware of how it is doing.
+
+2. encapsulation is defined as the process of enclosing one or more details from outside world through access right. it says how much access should be given to particular details. 
+ex. talking about bluetooth which we usually have it in our mobile. when we switch on a bluetooth, i am able to connect to another mobile or bluetooth enabled devices but i'm not able to access the other mobile features like dialing a number, accessing inbox etc. this is because, bluetooth feature is given some level of abstraction.
+
+3. polymorphism can be defined as the ability of using the same name for doing different things. more precisely we say it as 'many forms of single entity'. this play a vital role in the concept of oops.
+ex. let's say samsung mobile has a 5mp camera available i.e. – it is having a functionality of cameraclick(). now same mobile is having panorama mode available in camera, so functionality would be same but with mode.
+
+4. inheritance is the ability to extend the functionality from base entity in new entity belonging to same group. this will help us to reuse the functionality which is already defined before and extend into a new entity. 
+single level inheritance	- one base class and one derrives class.
+multi-level inheritance		- grand parent class (base class) ----> parent class(properties of before class) ----> child class(propertier of 				  parent class).
+hierarchical inheritance	- One base class with multiple derrived classes.
+hybrid inheritance
+multiple inheritance - Only be acheived with the help of interfaces.We cannot add multiple base classes in derrived class, Instead we can add 			        one base class and multiple interfaces.
+		     - We will get compile time error if we add more than one base class in derrived class.
+ 
+samsung will use the function of multiple phone (mobile & telephone). this would create a confusion for complier to understand which function to be called when any event in mobile is triggered like dial () where dial is available in both the phone i.e. - (mobile & telephone). to avoid this confusion c# came with the concept of interface which is different from multiple inheritance actually.
+-------------------------------------
+Advantages of OOPs:
+
+1.Reuse of code through inheritance.
+2.Flexibility through polymorphism.
+3.Encapsulation helps the programmer to build secure programs.
+4.OOP systems can be easily upgraded from small to large systems.
+5.Modularity(division of classes) for easy troubleshooting.
+
+*Not suitable for small applications.
+-------------------------------------
+Prevent a class from being inherited: By using SEALED keyworld in class.
+
+EX: sealed class ABC {}
+
+    class XYZ:ABC //Invalid and will give compile time error.
+------------------------------------
+POLYMORPHISM: it is the ability of a variable, object or function to take in multiple forms. 2 Types.
+
+1. compile time: overloading
+2. run time    : overriding
+
+-------------------------------------
+Value types: int, long,double,float. These are stored on stack.
+reference types: classes,interfaces,delegates,srtings. These are stored on Heap.
+-------------------------------------
+pallindrome:
+
+using system;
+namespace palindromecheck
+{
+    class program
+    {
+        static void main(string[] args)
+        {
+            string str, revstr;
+            console.writeline("enter any string to know it is palindrome or not");
+            str = console.readline();
+            char[] tempstr = str.tochararray();
+            array.reverse(tempstr);
+            revstr = new string(tempstr);
+            bool caseignore = str.equals(revstr, stringcomparison.ordinalignorecase);
+            if (caseignore == true)
+            {
+                console.writeline("............" + str + " is a palindrome..........");
+            }
+            else
+            {
+                console.writeline("............" + str + " is not a palindrome........");
+            }
+            console.read();
+        }
+    }
+}
+
+
+without built-in functions:
+
+private static bool chkpallindrome(string strval)  
+       {  
+           try  
+           {  
+               int min = 0;  
+               int max = strval.length - 1;  
+               while (true)  
+               {  
+                if (min > max) 
+		{ 
+                       return true; 
+		} 
+                   char minchar = strval[min];  
+                   char maxchar = strval[max];  
+                   if (char.tolower(minchar) != char.tolower(maxchar))  
+                   {  
+                       return false;  
+                   }  
+                   min++;  
+                   max--;  
+               }  
+           }  
+           catch (exception)  
+           {  
+                 
+               throw;  
+           }  
+       } 
+-----------------------------------	   
+Reverse a Number:
+
+using System;  
+  public class ReverseExample  
+   {  
+     public static void Main(string[] args)  
+      {  
+       int  n, reverse=0, rem;           
+       Console.Write("Enter a number: ");      
+       n= int.Parse(Console.ReadLine());     
+       while(n!=0)      
+       {      
+        rem=n%10;        
+        reverse=reverse*10+rem;      
+        n/=10;      
+       }      
+       Console.Write("Reversed Number: "+reverse);       
+    }  
+  }  
+ ------------------------------------------ 
+Reverse a string:
+
+public static string Reverse( string s )
+{
+    char[] charArray = s.ToCharArray();
+    Array.Reverse( charArray );
+    return new string( charArray );
+}  
+
+OR 
+
+using System;
+class Demo {
+   static void Main() {
+      string myStr, rev;
+      myStr = "Tom";
+      rev ="";
+      Console.WriteLine("String is {0}", myStr);
+      // find string length
+      int len;
+      len = myStr.Length - 1;
+      while (len >= 0) {
+         rev = rev + myStr[len];
+         len--;
+      }
+      Console.WriteLine("Reversed String is {0}", rev);
+      Console.ReadLine();
+   }
+}
+-------------------------------------------
+count of specific character in string:
+
+using system;  
+using system.collections.generic;  
+using system.linq;  
+using system.text;  
+  namespace findcountcharoccurance  
+{  
+    class program  
+    {  
+        static void main(string[] args)  
+        {  
+            string stroccur,strchar = null;  
+            console.writeline("enter the string in which you need to find the count of a char occurance");  
+            stroccur = console.readline();  
+              
+            console.writeline("enter the char to be searched..");  
+            strchar = console.readline();  
+            int intcnt =stroccur.length- stroccur.replace(strchar, string.empty).length;  
+            console.writeline("count of occurance is "+intcnt);  
+            console.readline();  
+        }  
+    }  
+} 
+------------------------------------------------
+Factorial of number
+
+using System;  
+  public class FactorialExample  
+   {  
+     public static void Main(string[] args)  
+      {  
+       int i,fact=1,number;      
+       Console.Write("Enter any Number: ");      
+       number= int.Parse(Console.ReadLine());     
+       for(i=1;i<=number;i++){      
+        fact=fact*i;      
+       }      
+       Console.Write("Factorial of " +number+" is: "+fact);    
+     }  
+  }  
+-------------------------------------------------------
+Static class: A static class is a class that cannot be instantiated or derived from, and it is sealed by default. The keyword static is used to declare a static class. The primary purpose of a static class is to act as a container for static members, such as constants,   static fields, and static methods.
+
+*Can an abstract class have static methods? 
+
+Yes, abstract class can have Static Methods. The reason for this is Static methods do not work on the instance of the class, they are directly associated with the class itself.
+
+*can we override method in abstract class
+
+An abstract method must be implemented in all non-abstract classes using the override keyword. After overriding, the abstract method is in the non-Abstract class. We can derive this class in another class, and again we can override the same abstract method with it.
+
+*can we use sealed class with abstract class
+
+A sealed class cannot be used as a base class. For this reason, it cannot also be an abstract class. 
+
+*default access modifier for interface
+
+Interfaces can not have default access modifiers other than public .
+-------------------------------------------------------
+partial class: 
+A partial class splits the definition of a class over two or more source (.cs) files. You can create a class definition in multiple physical files but it will be compiled as one class when the calsses are compiled.
+
+public partial class dailyexpenses  
+{  
+    to make it more real, let us consider this class is used by the husband .   
+    he will add his expenses (in programming life , his codes )  
+    public void addexpensesbyhus()  
+    {  
+    }  
+}  
+public partial class dailyexpenses  
+{  
+   to make it more real, let us consider this class is used by the wife.   
+   she will add his expenses (in programming life , her codes )  
+   public void addexpensesbywife()  
+    {  
+    }  
+} 
+
+
+------------------------------------------
+
+
+method overloading: 
+method overloading means creating multiple methods in a class with same names but different signatures (parameters). It is compile time polymorphism.it doesn't need inheritance
+
+using system;  
+namespace democsharp  
+{  
+    class program  
+    {  
+        public int add(int num1, int num2)  
+        {  
+            return (num1 + num2);  
+        }  
+        public int add(int num1, int num2, int num3)  
+        {  
+            return (num1 + num2 + num3);  
+        }  
+        public float add(float num1, float num2)  
+        {  
+            return (num1 + num2);  
+        }  
+        public string add(string value1, string value2)  
+        {  
+            return (value1 + " " + value2);  
+        }  
+        static void main(string[] args)  
+        {  
+            program objprogram = new program();  
+            console.writeline("add with two int parameter :" + objprogram.add(3, 2));  
+            console.writeline("add with three int parameter :" + objprogram.add(3, 2, 8));  
+            console.writeline("add with two float parameter :" + objprogram.add(3 f, 22 f));  
+            console.writeline("add with two string parameter :" + objprogram.add("hello", "world"));  
+            console.readline();  
+        }  
+    }  
+}  
+------------------------------------------------
+method overriding: 
+method overriding means having two methods with same name and same signatures [parameters], one should be in the base class and other method should be in a derived class [child class]. It needs inheritance. It is run time polymorphism.should have virtual keyword in base class and override keyword in derrived class. 
+
+* If we remove virtual and override keywords then the logic will consider base class method and output will be base class method output. 
+
+using system;  
+namespace democsharp  
+{  
+    class baseclass  
+    {  
+        public virtual int add(int num1, int num2)  
+        {  
+            return (num1 + num2);  
+        }  
+    }  
+    class childclass: baseclass  
+    {  
+        public override int add(int num1, int num2)  
+        {  
+            if (num1 <= 0 || num2 <= 0)  
+            {  
+                console.writeline("values could not be less than zero or equals to zero");  
+                console.writeline("enter first value : ");  
+                num1 = convert.toint32(console.readline());  
+                console.writeline("enter first value : ");  
+                num2 = convert.toint32(console.readline());  
+            }  
+            return (num1 + num2);  
+        }  
+    }  
+    class program  
+    {  
+        static void main(string[] args)  
+        {  
+            baseclass baseclassobj = new baseclass(); 
+            console.writeline("base class method add :" + baseclassobj.add(-3, 8));  
+            baseclassobj = new childclass();  
+            console.writeline("child class method add :" + baseclassobj.add(-2, 2));  
+            console.readline();  
+        }  
+    }  
+}  
+--------------------------------------------------
+abstract class:
+it is a class,can have abstract functions,should be declared in base class,all abstract functions body must be defined in derrived class,enforces abstraction.
+using System;
+class Employee
+{
+int empid;
+long salary;
+
+public void saveEmployee(int eid,long esal)
+{
+empid = eid;
+salary = esal;
+}
+
+public void printEmployee
+{
+cw("Id" + empid + " Salary" + salary);
+}
+}
+--------------------------------------------------
+interface:
+contract b/w two objects and is used for communication b/w 2 objects,can have only declaration of functions,fuctions can be defined in implemented class,interface can extend another interface,enforces abstraction.
+using system; 
+  
+interface inter1 
+{  
+    void display(); 
+} 
+  
+class testclass : inter1 
+{ 
+      
+    public void display() 
+    { 
+        console.writeline("abc"); 
+    } 
+  
+    public static void main (string []args) 
+    { 
+           
+        testclass t = new testclass(); 
+          
+        t.display(); 
+    } 
+} 
+---------------------------------------------
+Difference between abstract class and interface.
+
+			Abstract class								Interface
+
+1.it contains both declaraation and definition of methods				1.it contains only declaration of methods.
+												
+	public abstract class Car {								interface Car {
+	public abstract void Engine();----> method declared						void Engine();------> method declared
+	public void Dashboard(){-----> method defined							void Dashboard();
+	console.writeline();									}
+	
+	}
+}
+
+2.this can contain methods,fields,constants,constructors,				2.can contain undefined methods only.nothing else.
+  static members
+3.this does not support multiple inheritance						3.supports multiple inheritance.
+--------------------------------------------------
+* When to use abstract class and interface.
+
+-Abstract class is good choice when your are sure some methods are defined and must be implemented in the same way in all the derrived classes.
+-interface is good choice when you know a method has to be there, but it can be implemented differently by independent derrived class.
+
+* Interface is suggested normally, bacause it gives us the flexibility to modify the behaviour at later stage.
+*Interfaces cannot have a constructor because interfaces can only be derrived from
+--------------------------------------------------
+Can u create an instance  of an abstract class or an interface..?
+
+	No, Abstract class and interface are only used for inheritance and not for object creation.
+--------------------------------------------------
+Diff between out and ref parameters..?
+
+By using out and ref keywords we can pass parameters by reference. We can use them when we want to return more than one values from a method.
+
+* No need to initialize out parameter before passing, it needs to be initialized  before returning.
+
+EX:
+public static void Main(string[] args)
+{
+int a;
+int b=5;
+OutRefExample p = new OutRefExample();
+p.Update(out a, ref b);
+console.wr();
+}
+public class OutRefExample
+{
+public void Update(out int a, ref int b)
+{
+a=10;
+b=20;
+}
+}
+---------------------------------------------
+purpose of params keyword...?
+
+- it is used as a parameter which can take the variable number of arguments.bascically it is used when we don't know how many parameters to be                  used.
+---------------------------------------------
+Access Specifiers and what is default access modifier one..?
+
+Access specifiers are keywords to specify the accessability of the class,method,propert,field.
+1.public		- can access inside same class,inside derrived class, in same assembly code.
+2.private		- can access inside same class thats it.
+3.internal		- can access inside same class,inside derrived class, in same assembly code, not in other assembly code
+4.protected		- can access inside same class,inside derrived class, not in same assembly code
+5.protected internal	- can access inside same class,inside derrived class, in same assembly code and in other assembly code.
+
+* Private is default access modifier
+---------------------------------------------
+* We can use multiple catch blocks but only one out of them will execute.
+* We can have only try block without catch block, but we should have finally block after try block.
+* difference between throw ex and throw is....throw will give more information about the error compared to throw ex.
+---------------------------------------------
+--we can't use 'this' in a static method because the keyword 'this' returns a reference to the current instance of the class containing it.
+---------------------------------------------
+boxing & unboxing: 
+boxing and unboxing in c# allows developers to convert .net data types from value type to reference type and vice versa. converting a value type to a reference type is called called boxing in c# and converting a reference type to a value type is called unboxing in c#. 
+
+class test  
+{  
+    static void main()  
+    {  
+        int i = 1;  
+        object o = i; // boxing  
+        int j = (int)o; // unboxing  
+    }  
+} 
+---------------------------------------------------
+IS and AS Parameters:
+
+IS	-	it is used to check the type of the object.It is of boolean type
+AS	-	it is used to perform conversion between compatible reference type. Not boolean type.
+--------------------------------------------------
+ReadOnly	- Using readonly fields we can assign values in Declaration as well as Constructor part.The value of ReadOnly field can be 			  changed.Can be created using readonly keyword.It is runtime constant.
+Constant	- Using constant fields we can assign values only in declaration part.The value of Constant field cannot be changed.Can be 		          created using const keyword.It is compile time constant.
+---------------------------------------------------
+String vs StringBuilder:
+
+String		- it is immutable, that means we could not modify it after it is created.Every time we assign a value to it, it will create a 			  new string.
+StringBuilder	- it is mutable, that means if an operation is performed on string,it will not create a new instance everytime.
+		  EX: string1.Append("asa");
+---------------------------------------------------
+* Nullable types: int i = null(not possible)	
+  EX: int? i= null(possible)
+---------------------------------------------------
+Struct:
+The struct is a value type in C# and it inherits from System.Value Type.
+Struct is usually used for smaller amounts of data.
+Struct can’t be inherited from other types.
+A structure can't be abstract.
+No need to create an object with a new keyword.
+Do not have permission to create any default constructor.
+
+Class:
+The class is a reference type in C# and it inherits from the System.Object Type.
+Classes are usually used for large amounts of data.
+Classes can be inherited from other classes.
+A class can be an abstract type.
+We can create a default constructor.
+-------------------------------------------------
+Serialization: it is the process of converting object to binary formate(bytes). EX:database, file,memory.Once it is conveeted to bytes,it can be easily stored and written to a disk or any such storage devices.
+- JsonConvert.SerializeObject(empclass)
+-------------------------------------------------
+delegates: 
+
+- It is a variable that holds the reference to a method or pointer to a method.
+- It can refer to more than one methods of same return type and parameters(must be same for all the methods)
+
+When to use:
+
+When we need to pass method as a parameter then we will use delegates
+2 types(single cast,multi cast)
+used 2 ways
+----event delegation model:publition(publishes event) and subscriber(handle events).
+----threads 
+
+using system;  
+  
+namespace delegates  
+{  
+    public delegate int operation(int x, int y);  
+         
+    class program  
+    {     
+        static int addition(int a, int b)  
+        {  
+            return a + b;  
+        }  
+  
+        static void main(string[] args)  
+        {   
+            operation obj = new operation(program.addition);  
+   
+            console.writeline("addition is={0}",obj(23,27));   
+            console.readline();    
+        }  
+    }  
+}
+
+------------------------------------------------
+  
+multicast delegate:
+it is a delegate that holds the reference of more than one method/function.multicast delegates must contain only methods that return void, else there is a run-time exception.
+----------------------------------------
+Difference between events and delegate:
+
+- The event is a notification mechanism that depends on delegates.
+
+Functions -------> Delegate -------> Events
+
+- It cannot be created without delegates.
+- Event is like a wrapper over the delegate to improve it's security.
+----------------------------------------
+generics:
+says about the concept of type parameters,which make it possible to design classes and methods without specifying datatypes.improves code reusability,no boxing unboxing.
+---------------------------------------------------
+ienumerable:
+ienumerable exists in system.collections namespace.
+ienumerable can move forward only over a collection, it can’t move backward and between the items.
+ienumerable is best to query data from in-memory collections like list, array, etc.
+while query data from a database, ienumerable execute a select query on the server side, load data in-memory on a client-side and then filter data.
+ienumerable is suitable for linq to object and linq to xml queries.
+example:
+ mydatacontext dc = new mydatacontext ();
+ienumerable<employee> list = dc.employees.where(p => p.name.startswith("s"));
+list = list.take<employee>(10); 
+sql:
+select [t0].[empid], [t0].[empname], [t0].[salary] from [employee] as [t0]
+where [t0].[empname] like @p0
+notice that in this query "top 10" is missing since ienumerable filters records on the client side
+---------------------------------------------------
+iqueryable:
+iqueryable exists in system. linq namespace.
+iqueryable can move forward only over a collection, it can’t move backward and between the items.
+iqueryable is best to query data from out-memory (like remote database, service) collections.
+while query data from a database, iqueryable execute the select query on the server side with all filters.
+iqueryable is suitable for linq to sql queries.
+iqueryable supports deferred execution.
+example:
+ mydatacontext dc = new mydatacontext ();
+iqueryable<employee> list = dc.employees.where(p => p.name.startswith("s"));
+list = list.take<employee>(10); 
+sql:
+select top 10 [t0].[empid], [t0].[empname], [t0].[salary] from [employee] as [t0]
+where [t0].[empname] like @p0
+notice that in this query "top 10" is exist since iqueryable executes a query in sql server with all filters.
+
+----------------------------------------------------
+Linq:
+LINQ (Language Integrated Query) is uniform query syntax in C# and VB.NET to retrieve data from different sources and formats.SQL is a Structured Query Language used to save and retrieve data from a database. In the same way, LINQ is a structured query syntax built in C# and VB.NET to retrieve data from different types of data sources such as collections, ADO.Net DataSet
+Example:
+string[] names = {"Bill", "Steve", "James", "Mohan" };
+var myLinqQuery = from name in names
+                where name.Contains('a')
+                select name;
+				
+foreach(var name in myLinqQuery)
+    Console.Write(name + " ");
+-----------------------------------------------------
+ArrayList:
+ArrayList is a part of collections in C#. It is used to contain data of any given data type. It is similar to an array in C# but it doesn’t have a definite size. Its size increases automatically as more elements are added in it.
+ArrayList arrList = new ArrayList();
+//Add
+arrList.Add(7896);
+arrList.Add("Seven");
+//Read
+int first_index = (int)arrList[0];
+string second_index = (string)arrList[1];
+----------------------------------------------
+HashTable:
+System.Collections namespace in C# contains Hashtable that is quite similar to the Dictionary. Hashtable stores data in the form of key-value pairs.It does that internally by assigning a hash code to hash key internally and whenever data is accessed it matches the hash code with a hash key to retrieve data. Each item in the table will have a key-value pair
+Hashtable hashtbl = new Hashtable();
+//Add
+hashtbl.Add("Number",1);
+hashtbl.Add("Car", "Ferrari");
+hashtbl.Add(8, "eight");
+//Read
+int value1 = (int)hashtbl["Number"];
+String value2 = (string)hashtbl["Car"];
+String value3 = (string)hashtbl[8];
+------------------------------------------------
+Extension Method:
+
+Extension methods are special static methods that can be called as if they were instance methods of an existing type. They are a convenient way to add new methods to an existing class without changing the original source code or inheriting from the class.
+To create an extension method, you need to define a static method inside a static class. The first parameter of the method should be the type you want to extend, prefixed with this keyword. This special keyword tells the C# compiler that this is an extension method.
+First, let's create a new static class called StringExtensions. The class name is not important, but it's a common convention to use the name of the type being extended followed by "Extensions". Inside this class, we'll define a static method called Reverse:
+
+ 
+public static class StringExtensions
+{
+    public static string Reverse(this string input)
+    {
+        char [] chars = input.ToCharArray();
+        Array.Reverse(chars);
+        return new string(chars);
+    }
+}
+In this example, we created a public static string method called Reverse with a single parameter. The this keyword before the string type indicates that this is an extension method for the string class.
+
+Now, let's see how to use this new extension method in our Program class:
+
+ 
+class Program
+{
+    static void Main(string [] args)
+    {
+        string example = "Hello, World!";
+        string reversed = example.Reverse();
+        Console.WriteLine(reversed); // !dlroW ,olleH
+    }
+}
+Notice that we didn't have to create an instance of the StringExtensions class. Instead, we used the Reverse method directly on the string instance as if it were an instance method.
+--------------------------------------------------------
+Solid Principles: These are set of principles which must be followed to develop flexible,maintainable and scalable software systems. 
+		  -These are not concreat(can be acheived in multiple ways.)
+
+S - Single Responsibility Principle	- states that a class should have only one responsibility Or a class should have only one reason to 						  change.
+					  Advantages: When a class have only one responsibility it becomes easier to change and test.
+
+					  EX: Invoice class - Add and Delete invoice are own responsibilities.
+							    But, Sending Email and Error logging are extra responsibilities(Can create another 								    class for this).
+O - Open-Closed Principle		- states that software entities(classes,modules) should be open for extension but closed for 							  modification. SRP is prerequisite to OCP.
+					- Benifit is, simple testing is required to test individual classes, but if we keep on adding or  						  modifying in one class, then the whole class needs to be tested again.
+
+I - Interface Segregation Principle	- states that a class should not be forced to implement interfaces that it does not use. It is better to 					  have multiple smaller interfaces than larger interfaces.
+
+L - Liskov Substitution Principle	- states that an object of a child class must be able to replace an object of the parent class without 						  breaking the application. All the base class methods must be applicable for the derrived class.
+
+D - Dependancy Inversion Principle	- states that a high-level class must not depend upon a low level class.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+									.NET MVC
+MVC: It is a framework for building web applications.
+
+Model  		- A model is a class that contains the business logic of the application. It also used for accessing data from the database.
+View		-The MVC View is a standard HTML page that may contain script. It is used to create web pages for the application. Unlike 			 ASP.NET Web Pages, MVC Views are mapped to the action and then controller renders the view to the browse
+controller	- acts as an interface between model and view components to process all the buisiness logic and render the final output to view.
+
+
+Flow: Client will send request to controller, controller will invoke model. Model and controller returns data to view. Model can gets data from database also.Finally view will send response to the client.
+------------------------------------------------------------
+MVC vs WebForms
+
+-In webforms one aspx file will have one aspx.cs file which means UI(aspx) is tightly copouled with logic(aspx.cs).
+-In MVC one view can interact with multiple controllers and vice versa. Hence it is loosely coupled.
+
+Seperation of concerns 	- advantage of MVC. Seperation of UI, Bussiness logic, Data/Model.
+Multiple View support 	- due to seperation of model from view the UI can display of same data at same time.
+Change Acomodation 	- In real time UI changes occure frequently, Here the model does not depend on views and adding new types of views does 			  not affect model.
+More Control		- MVC Framework provides more control over HTML, JS and CSS than the traditional webforms
+Testability		- due to SOC, MVC can be better testability of web applications	
+Light Weight 		- MVC doesn't uses ViewState and thus reduces the bandwidth of the request to some extent.
+Full Features		- ASP.NET MVC is built on top on ASP.NET thus MVC will have more features.
+-----------------------------------------------------------
+Return types of controller action method:
+
+VIEW RESULT	 	- this return type is used to return a webpage from action method.
+PARTIALVIEWRESULT	- This is used to send a part of a view that will be rendered in another view.
+REDIRECTRESULT		- this is used to redirect from one controller to other controller depending on the URL.
+REDIRECTTORUOTERESULT	- this is used to redirect to any other action method within the same controller.
+CONTENTRESULT		- this is used to return HTTP content type like text/plain as the result.
+JSONRESULT		- this is used when we want to return a JSON message
+JAVASCRIPTRESULT	- this is used to return javascript code that will run in browser.
+FILERESULT		- this is used to return binary output in the result
+EMPTYRESULT		- this is used to return nuthing(viod) in the result.
+------------------------------------------------------------
+Filter and types in MVC:
+
+asp.net MVC filter is a custome class where we can write custome logic to execute before or after an action method executes.
+
+Authorization filters 		- Performs authentication and authorize before executing an action method.
+				  Built-in filter - [Authorize],[RequireHTTPS]
+Action filters			- Perform some custome operations before and after an action method executes
+Result filters			- Perform some custome operations before or after the execution of the view 
+				  Built-in filter - [OutputCache]
+Exception filters		- Perform some operations if there is an unhandled exception thrown during the execution of application
+				  Built-in filter - [HandleError]
+
+------------------------------------------------------------
+Authentication and Authorization in MVC:
+
+Authentication	- This is the process of obtaining some sort of credentials from the users and using those credentials to verify the USER'S 			  IDENTITY
+Authorization   - This is the process of allowing an authenticated user Access to resources.
+
+Types:
+
+FORM based auth 	- Form auth is based on cookies, the auth and permission settings are stored in cookies. EX: Login page.
+PASSPORT auth		- it is a centralized auth service provided by Microsoft(purchase).
+WINDOWS auth		- we use this when we are creating a web application for a limited number of users who already have windows account. 				  Useful in Intranet environment
+------------------------------------------------------------
+Output Caching		- this enables us to cache the content returned by a controller action. This is kind of Result filter.
+
+[OutputCache(Duration=10)]
+public ActionResult Index()
+{
+}
+-------------------------------------------------------
+
+viewbag in asp.net mvc is used to transfer temporary data (which is not included in the model) from the controller to the view.internally, it is a dynamic type property of the controllerbase class which is the base class of the controller class.doesn't requires typecasting for complex datatypes
+
+viewdata is similar to viewbag, which transfers data from controller to view. viewdata is of dictionary type, whereas viewbag is of dynamic type. however, both store data in the same dictionary internally.viewdata is a dictionary, so it contains key-value pairs where each key must be a string. Requires typecasting for complex datatypes
+
+tempdata is used to transfer data from view to controller, controller to view, or from one action method to another action method of the same or a different controller.tempdata stores the data temporarily and automatically removes it after retrieving a value.tempdata is a property in the controllerbase class. so, it is available in any controller or view in the asp.net mvc application.
+-----------------------------------------
+Partial View - It is a special view which renders a portion of view content.it is just like user control of a web form application. Partial view 	       can be used in multiple views.helps us to reduce code duplication.
+The @Html.Partial() renders the specified partial view. It takes a partial view name as a string parameter and returns MvcHtmlString. It gives an HTML string, so you have a chance of altering the HTML before rendering.
+----------------------------------------
+Validation in MVC 	-  validation can be done using DATA ANNOTATION attributes.
+----------------------------------
+MVC Scaffolding		- It is a code generation framework for asp.net web applications. Using scaffolding can reduce the time to develop 				  basic code. EX: template with CRUD operations.
+----------------------------------
+Bundling 	- it lets us combine multiple .js files or multiple .css files so that they can be downloaded as a unit rather than making 			  individual HTTP request. 
+Minification	- It squeezes out white spaces and performs other types of compression to make the downloaded files as small as possible.
+-----------------------------------
+Security in web applications in MVC: 
+
+1.Error Handling must setup custome error page to hide methods shown on page when error occured.
+2.Cross-Site-Request-Forgery - anti forgery token.
+3.Cross-Site-Scripting attacks related to .js
+4.Malicious file upload.
+5.SQL Innjection attack	- Validate inputes, use parameterized queries, use Entity framework,Dapper, Use Stored Procedures.
+6.Token based auth in web api
+7.Save password in encrypted form
+8.Use HTTPS instead of HTTP for web application.
+---------------------------------------
+Routing:
+ASP.NET MVC routing is a pattern matching system that is responsible for mapping incoming browser requests to specified MVC controller actions.ASP.NET introduced Routing to eliminate the needs of mapping each URL with a physical file. Routing enables us to define a URL pattern that maps to the request handler. This request handler can be a file or class. In ASP.NET Webform application, request handler is .aspx file, and in MVC, it is the Controller class and Action method.
+------------------------------------------------------------------------------------------------------------------------------------------------
+								ADO.NET/Entity Framework
+
+DataSet class	- it is a container which gets the data from one or more than one tablesfrom the database 
+DataReader	- it allows us to read data returned from select command. It is read only.
+DataAdapter	- it bridges the gap between the disconnected DataSet/DataTable objects and the physical database.
+
+ExecuteScaler	- returns single value from dataset.
+ExecuteNonQuery	- returns resultset from dataset and it has multiple values. used for insert,update,delete.
+ExecuteReader	- it only retrives data from dataset.no update, insert. it is readonly.
+
+ORM: Object Relational Mapper	- it is used for mapping objects in our application with database tables.it is like a wrapper to make database 					  calls simple and easy.
+			Types: Entity Framework 
+			       Entity Framework core.
+			       Dapper
+Entity Framework	- it is open source ORM.it is like wrapper on ADO.NET. it minimizes the coding effort.
+
+DBContext	- it is a class in EF that helps to create communication between database and domain/entity calss.
+DBSet		- it represents an entity set that can be used for create, read,updateand delete operations.
+
+Types of approaches in EF:
+
+Database first approach	- enables us to create an entity model from existing database.
+Code fisrt approach	- enables us to create a model and their relation using classes and then create database from that classes.
+Model first approach	- model classes and their relation is created first using ORM designer and physical database is generated using this 				  model.
+
+----------------------------------------
+-difference b/w webapi and .net mvc: asp.net mvc is used to create web applications that return both views and data but asp.net web api is used to create full-blown http services with an easy and simple way that returns only data, not view. web api helps to build rest-ful services over the .net framework . ... mvc only return data in json format using jsonresult.
+
+ -----------------------------------------------
+Media Type Formatters:
+In web API, media type formatters are classes that are responsible for serialization data. Here, serialization generally means a process of translating data into a format that can be transmitted and reconstructed later.  Because of serializing request/response data, Web API can understand request data format in a better way and send data in a format that the client expects. It simply specifies data that is being transferred among client and server in HTTP response or request. 
+------------------------------------------
+
+What is Collect and ClearCollect in PowerApps?
+The Collect function adds records to a data source. The items to be added can be:
+A single value: The value is placed in the Value field of a new record. All other properties are left blank.
+A record: Each named property is placed in the corresponding property of a new record. All other properties are left blank.
+A table: Each record of the table is added as a separate record of the data source as described above. The table isn’t added as a nested table to a record. To do this, wrap the table in a record first.
+
+The ClearCollect function deletes all the records from a collection. And then adds a different set of records to the same collection. With a single function, ClearCollect offers the combination of Clear and then Collect.
+ClearCollect returns the modified collection as a table. ClearCollect can only be used in a behavior formula.
+--------------------------------------------
+Why private constructor is used ?
+Private Constructors are used to restrict the instantiation of object using 'new' operator. It is commonly used in classes that contain static members only.If you don't want the class to be inherited we declare its constructor private.This type of constructors is mainly used for creating singleton object.
+------------------------------------------
+What is the difference between TempData keep() and peek() function?
+temdata uses TempDataDictionary where every data read, will be marked as available for deletion, keep() and peek() both are used to retain data, the only difference is, keep() will be used to retain data that has been marked for deletion (Read and Keep), whereas peek() will be used where you want to read data without marking it for deletion.
+----------------------------------------
+What is Dependency Injection?
+Dependency injection is a software design pattern that implements inversion of control for resolving dependencies. A dependency is an object that can be used (a service). An injection is the passing of a dependency to a dependent object (a client) that would use it.
+1.Constructor Injection : The constructor injection normally has only one parameterized constructor, so in this constructor dependency there is no default constructor and we need to pass the specified value at the time of object creation. 
+2.Property Injection : We use constructor injection, but there are some cases where I need a parameter-less constructor so we need to use property injection
+3.Method Injection : In method injection we need to pass the dependency in the method only. The entire class does not need the dependency, just the one method
+------------------------------------------------------------------------------------------------------------------------------------------------
+								WEB API
+
+Web API	- API stands for Application Programming Interface. It is an intermediate software agent that allows two or more applications to 		  interact with each other.
+
+Web API advantages over WCF:
+
+1.it works the way HTTPS works using standard HTTP verbs like GET,POST,PUT,DELETE for the CRUD operations.
+2.it is open source and WCF is not.
+3.it is lightweight architecture and it is good for devices which have limited bandwidth(JSON, XML are lightweight).
+4.it has very easy configuration settings.
+------------------------------------------------
+REST: Representational state transfet - is a set of guidlines which helps in creating a system where applications can easily communicate with   	each other.
+RESTFULL: If an API or WCF is following REST guidlines then it is called RESTFULL API.
+
+REST Guidlines:
+
+1.Seperation of client and server	- Client things can be developed in Angular/React and server can be .net/java.Client and 
+					  server are not dependent on each other.
+2.Stateless				- server will not store anything about the latest http request the client made. it will treate every 						  request as new.No session,no history
+-------------------------------------------------
+How to consume web api from .net MVC application..?
+
+-Web Api method can be consumed with the help of HttpClient class.
+
+
+
+------------------------------------------------
+HTTP Verbs/HTTP methods
+
+GET - order list
+GET - with parameter
+POST - create new resource
+PUT - Update existing resource
+DELETE - delete resource
+------------------------------------------------
+POST vs PUT in getting list
+------------------------------------------------
+Web API controller vs MVC controller.
+
+Web Api controller: derrives from SYSTEM.WEB.HTTP.APICONTROLLER class. It does not give view support.
+MVC controller:	    derrives from SYSTEM.WEB.MVC.CONTROLLER class. It gives view support.
+-----------------------------------------------
+Return types in web api:
+
+1.Void	-  it will return empty content.
+2.HTTPResponseMessage	- it will convert response to HTTP message.
+3.IHTTPActionResult	- internally calls ExecuteAsync to create an HTTPResponseMessage.
+---------------------------------------------
+Content Negotiation in Web Api		-  whenever we consume api, we receive data either in JSON/XML/custome formate
+					   content-type: application/json
+----------------------------------------------
+Response codes in Web Api:
+
+1.1XX: communicates transfer protocol level information(100,101,102,103....)
+2.2XX: indicates that client's request ws accepted successfully(200 OK, 201 Created, 202 Accepted ,204 No Content, 205 Reset Content)
+3.3XX: This means request is not complete. The client must take some additional action in order to complete their request.
+4.4XX: Means there is some error in API code or request is incorrect.(400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 408 	Request Timeout, 405 Method Not Allowed)
+5.5XX: Means error is not due to API code but it is due to some environment settings(500 Internal Server Error, 501 Not Implemented, 502 Bad Gateway, 503 Service Unavailable, 504 Gateway Timeout).
+----------------------------------------------
+Basic Authentication: the user passes their credentials through post/get/put requests.Then Web Api will validate cred and then new session will 		      be started
+API Key Authentication: the API owner will share the API key with the users and this key will authenticate the users of that API.
+			UserName Password not required in this case.
+
+Token based Auth: 4 steps
+
+1.Client application first sends a request to authenticationserver with valid cred.
+2.The Auth server/Web api will send an access token to client as a response.this token will have all data about particular user with expiry time.
+3.The client application then uses this token to access the restricted resources in the next requests untill token is valid.
+4.If access token is expired, then the client application can request for new token by using refresh token.
+
+* OAUTH is a standard for creating token based authentication and authorization.
+------------------------------------------------
+JWT - JSON Web Tokens Authentication: it is atoken based authentication whete JWT is a token formate.
+
+1.from browser will seend username and password.
+2.server will create JWT with secret and this token is sent back to browser.
+3.again request sent from browser and JWT token will be present in Authorization header.
+4.Now, Server checkes the JWT signature gets user info from JWT
+5.Server sends response to client.
+
+* when we decode JWT token, we will have Header(contains algorithm, type of token), Payload(contains details/content),signature(verifies issuer of the JWT is correct or not)
+
+*JWT token resides in the request header where Key:Authorization and Value: Bearer token.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+									.NET CORE
+
+.NET Core  - latest version .NET 8
+
+Advantages of .Net core:
+-cross platform
+-open source
+-integration of modern UI framework is easy - Angular, react,vue.js
+-multiple hosting - kestral,IIS,Nginx
+-build in dependancy injection - loosely coupled, reusable,testability
+-support multiple IDE's visual studio, VS for MAC, VS code
+--------------------------------------------------------
+Project structure of .NET core
+
+wwwroot - to store static files of the application - js/css/images
+program.cs - entry point of the application
+startup.cs - configure services and request pipeline for the application
+appsettings.json - configuration settings like database connection strings.
+----------------------------------------------------------
+Program.cs - it is the entry point of the application via Main() method. firstly it will build the host server like IIS, kestral and then it will invoke the startup.cs class.
+----------------------------------------
+startup.cs - it is used to configure the services which are required by the app by using ConfigureServices method.
+
+ConfigureServices method - this will execute before configure method. Can add any number of services inside method.
+
+Configure method will just configure the request pipeline(methods will execute in the same sequence - these methods are also called Middleware components.)
+-------------------------------------
+Dependancy Injection: helps to create loosely coupled design of the application.refer code in screenshots.
+----------------------------------
+Service Lifetime in asp.net core - it describes for how long the instance of any class will persist.
+
+AddSingleton - create only one instance when the service is requested for the first time and then the same instance is shared by all http requests. EX: logger will open file and logs exception for the first time.later it will not close and open again. it will just logs exception.
+
+AddScoped - Create single instance for each request. For different http request there will be different instance.
+
+AddTransient - This instance is not shared at all. Every time a new instance is created.
+-----------------------------------
+Middleware - it is a component that is executed on every request in .net core applications.Middlewares are setup in the Configure menthod of Startup .cs class EX: useStaticFiles(),UseRouting(),UseAuthorization() these are part of request pipeline in same sequence.
+----------------------------------
+Kestral - light weight webserver used for hosting. It is cross platform and can be used with other servers like IIS,Nginx,Apache.It is open source.
+
+IIS - complete web server used for hosting. Can run only on windows. Not open source.
+---------------------------------
+Request Delegate - handles each http request and are used to build request pipeline by using RUN,MAP and USE extension methods.
+
+USE - this method will execute next middleware method
+RUN - Terminates Chain. No other middleware methods will run after this. Should be placed at the end of pipeline.
+MAP - execute middleware if path requested by user equals path provided in parameter.
+----------------------------------
+host in asp.net core - configures a server like kestral/IIS which is present in Main() method.
+---------------------------------------------
+Techniques to save Configuration settings in asp.net core 
+	-appsettings.json 	- default
+	-Azure KeyVault 	- mostly used
+	-Environment variables
+	-In-memory .net objects
+	-Command line arguments
+--------------------------------------
+Routing in asp.net core - Used to handle incomming http request for the app based on the URL
+
+Atribute routing - it is the ability to manupilate the behaviour url buy route attribute
+------------------------------------
+ASP.NET core MVC request life cycle:
+
+	HTTP request ----> Middleware ----> Routing ----> Controller Initialization ---->Action method execution ---->Result Execution
+															|
+														     -------
+														     |	    |
+											Response	<----	    View result	  Data result	
+
+-----------------------------------------------
+Metapackage - this package is automatically added in asp.net core application whenever we create. It includes all dependencies and no need to include each one in namespace.
+----------------------------------------
+How ASP.NET core serves static files - wwwroot in the folder containes all static files. UseStaticFiles() method inside startup.cs class and in Configure method enables static files to be server to client.
+-------------------------------------
+JSON files in asp.net core:
+
+global.json   		- we can define solution level settings in here like application name and version.
+launchsettings.json 	- we can set environment variables in this file like dev and prod rekated details.
+appsettings.json 	- we can define Configuration settings like database connection strings.
+bundleconfig.json 	- we can define configuration for bundling and minification for the project
+project.json 		- we can store all project level configuration settings like dependencies/versions. 
+------------------------------------
+State Management:
+
+Cookies - Stores data in users browser. Browser send cookies with every request.
+Session - Session state helps in transferring data between different pages. It takes help of cookies for this purpose.
+TEMPDATA - transfer data from controller to view 
+Query string - used to transfer limited data by appending the url of the request.
+
+* In .NET Core we use syntax like   HttpContext.Session.SetString(SessionName, "Jarvik"); with 2 parameters to store value.
+* In .NET we use HttpConttext.Current.Session and Session["UserInfo"] = new User { FirstName = "Joe", LastName = "Bloggs" };
+-------------------------------
+Caching in asp.net core: 
+
+Response caching in ASP.NET Core is a technique used to improve the performance and scalability of web applications by caching the ASP.NET Core MVC responses returned by the server for a specific period. Caching the response can help reduce the number of requests made to the server, as clients can reuse the cached response instead of requesting the same resource again.Response caching works by adding a caching layer between the client and the server. When a client requests a resource, the caching layer checks whether the response for the request has been cached. If the response is cached, the caching layer returns the cached response to the client. If the response is not cached, the request is forwarded to the server, and the server generates the response and caches it for future use.
+-------------------------------
+ModelValidation - can be done using DataAnnotation technique. Set the [Required] attribute at top of the property and therefore it will not accept any null or blank value.
+-----------------------------------
+Handle Error in asp.net core - Error handling for dev or other environments can be set in Configure method of Startup.cs class.
+if(env.IsDevelopment) {
+app.UseDeveloperExceptionPage();
+}
+else {
+app.UseExceptionHandler("/Error");
+} 
+
+-----------------------------------
+Enable session in asp.net core - app.UseSession();
+--------------------------------------
+Garbage collection: 
+
+Garbage collection in ASP.NET Core automatically manages the allocation and deallocation of memory that an ASP.NET Core application uses. The garbage collector is responsible for identifying and reclaiming memory no longer needed by the application, thus freeing up resources and improving the application's performance.In addition, ASP.NET Core provides several tools and APIs for monitoring and diagnosing garbage collection behavior, including the GC.Collect() method, which can force a garbage collection cycle, and the GC.GetTotalMemory() method, which returns the total amount of memory used by the application.
+---------------------------------
+Synchronous programming in ASP.NET Core blocks the execution of source code until a task is completed. In contrast, asynchronous programming allows the execution of code to continue while a task is being processed in the background.Asynchronous programming is useful for long-running operations that would otherwise block the application's main thread, such as reading from a file or making a network request.
+-------------------------------
+
+
+
+
+
+
+
+
+agile methodology: the agile methodology is a way to manage a project by breaking it up into several phases. it involves constant collaboration with stakeholders and continuous improvement at every stage. once the work begins, teams cycle through a proce ss of planning, executing, and evaluating.
+1. requirements gathering
+2. design the requirements
+3. construction/ iteration
+4. testing/ quality assurance
+5. deployment
+6. feedback
+------------------------------------------------------------------------------------------------------------------------------------------------
+									SQL
+
+			DBMS: 										RDBMS
+
+1.stores data as file.									1.Stores data in tabular formate
+2.No relation between data								2.data is related to each other(ForeignKey relationship)
+3.Normalization is not possible								3.Normalization is present.
+4.deals with small quantity of data.							4.deals with large amount of data
+5.EX: XML										5.EX: MSSQL,MySQL,Oracle,PostgreSQL
+-------------------------------------------
+Constraint in SQL: it is used to specify rules for data in the table. Can limit the type of data that can go into table.
+
+1.Primary Key constraint	- which can uniquely identify each row in a table.
+2.Not Null			- tells that we cannot store null value in a table.
+3.Foreign key			- which can uniquely identify each rown in another table.
+4.Check				- helps to validate the values of the column to meet particular condition. EX: Age int Not Null CHECK(Age > 18)
+5.Default			- specifies a default value for a column when no values is specified by user. 
+				  EX: DateFrom date DEFAULT GETDATE() 
+6.Unique			- tells that all values in the column must be unique.
+				  EX: CONSTRAINT UC_Student UNIQUE (ID,Name) 
+
+* Primary key cannot accept null values							 UNIQUE key accepts one Null value.
+* Primary key creates clustered index							 cretates Non clustered index
+* One Primary key is present in a table							 More than one Unique key in a table.
+-------------------------------------------
+Difference between DELETE, TTRUNCATE and DROP.
+
+DELETE: it is DML, It is used to delete one or more rows from table. It can be roll back.
+
+TRUNCATE: it is DDL, it is used to delete all rows from table.can be roll backed. It deletes all rows from table but not table structure/schema.
+
+DROP: it is DDL, it is used to drop whole table with structure/schema. It cannot be roll back
+-------------------------------------------
+Triggers and types of Triggers:
+
+Triggers are stored programs which are automatically executed or fired when an event occures(insert,delete,update)
+
+EX: Create Trigger trigName ON tableName
+    FOR UPDATE
+    AS
+    Begin
+    
+	some statement//////
+   End
+
+Types:
+
+DML: Instead of trigger, After trigger
+DDL: Create after drop
+Log On: session log on event
+
+
+-------------------------------------------
+stored procedure: 
+a stored procedure is a precompiled set of one or more sql statements that are stored on sql server. the benefit of stored procedures is that they are executed on the server-side and perform a set of actions, before returning the results to the client-side.
+1.system defined stored procedure(sp_rename,sp_help)
+2.user defined(which we create)
+
+			SP										FUNCTION
+
+1.May or may not return the value								1.must return the value
+2.Can have input/output parameters								2.can have only input parameters
+3.Can call function inside SP									3.cannot call SP from a function
+4.cannot use SP in SQL statements like SELECT, INSERT,UPDATE					4.can use SQL statements in functions.
+  etc. 
+5.can use try catch exception handling in SP							5.cannot use try catch exception handling.
+6.can use transactions inside SP								6.cannot use transactions inside functions.
+
+
+* Optimize a Stored Procedure:
+
+1.Use SET NOCOUNT ON
+2.specify column names instead of * in select staments.
+3.use schema name before objects or tables. EX: selecct name from dbo.employee.
+4.use EXISTS() instead of COUNT(). EX: if(EXISTS(Select name from dbo.employee)).
+5.use TRANSACTION when required only 
+			
+-------------------------------------------
+
+Views:
+In SQL, a view is a virtual table based on the result-set of an SQL statement.A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
+
+**Table Renaming or Deletion:** If the underlying table is renamed or deleted, the view will become invalid. You might need to recreate the view using the new table name or restore the table
+
+Example:
+CREATE VIEW [Brazil Customers] AS			
+SELECT CustomerName, ContactName
+FROM Customers
+WHERE Country = 'Brazil';
+--------------------------------------------
+*WHERE clause is used before GROUP BY clause.
+*HAVING clause is used after GROUP BY clause
+*WHERE clause cannot contain aggregate function like SUM,ADD etc..
+*HAVING clause can contain aggregate function like SUM,ADD etc..
+--------------------------------------------
+SubQuery:
+A Subquery or Inner query or a Nested query is a query within another SQL query and embedded within the WHERE clause.
+A subquery is used to return data that will be used in the main query as a condition to further restrict the data to be retrieved.Subqueries can be used with the SELECT, INSERT, UPDATE, and DELETE statements along with the operators like =, <, >, >=, <=, IN, BETWEEN, etc.
+Example 1:
+SELECT * FROM CUSTOMERS WHERE ID IN (SELECT ID FROM CUSTOMERS WHERE SALARY > 4500);
+
+Example 2:
+INSERT INTO CUSTOMERS_BKP SELECT * FROM CUSTOMERS WHERE ID IN (SELECT ID FROM CUSTOMERS);
+--------------------------------------------
+*IDENTITY - Auto increment and it is PRIMARY KEY only.
+--------------------------------------------
+Indexes: These are used in relational database to retrive data very fast.
+
+Clustered Index		- It defines the order in which data is physically stored in the table EX: Dictionary
+			- there can be only one clustered index per table
+			- In SQL server, if we create PRIMARY key on an column then automatically clustered index is created on that column.
+			  EX: Dictionary 
+			- it retrives data very fastly
+
+CREATE CLUSTERED INDEX indexName
+ON tableName(columnName ASC/DESC)
+
+Non-Clustered index	- it is stored at one place and table data is stored at another place.So this index is not physically stored.
+			 EX: Book Index
+			- A table can have multiple non-clustered index.
+			- It retrives data slowly
+
+CREATE NONCLUSTERED INDEX indexName
+ON tableName(columnName ASC/DESC)
+----------------------------------------------
+Cursor: A database Cursor is a control which enables iteration over the rows or records in the table.
+
+5 Steps:
+
+1.Declare the Cursor 
+2.Open the Cursor
+3.Fetch each row record using while loop/Iterate the rows
+4.Close the Cursor
+5.Deallocate the Cursor.
+
+*Mostly it is avoided because it consumes more memory from our system which is not good for performance.
+---------------------------------------------
+* Difference between scope_identity and @@identity
+
+Both are used to get the last value entered in the identity column of the table.
+
+*The @@identity returns the last identity created in the same session. The session is the database connection.
+	SELECT @@IDENTITY
+*The scope_identity function returns the last identity created in the same session and the same scope. The scope is the current query or the     current stored procedure
+	SELECT SCOPE_IDENTITY()
+- Mostly we use SCOPE_IDENTITY() function is used inside stored procedure.
+----------------------------------------------
+CTE: Comman Table Expression, is a temporary named result set that we can reference within a SELECT,INSERT,UPDATE or DELETE statement.
+
+EX: with engineers(CTE name) as (
+	select * from employee where dept='Engineering'------> CTE body 
+)
+
+we can use engineers CTE name as below
+
+select * from engineers
+
+----------------------------------------------
+ACID properties: 
+
+Atomocity	- Each trancation is all or nothing.EX: If inside a transaction there are 5 sql statements either all 5 will execute or none.
+Consistency	- Data should be valid according to all defined rules.
+Isolation	- Transactios do not affect each other
+Durability	- Inserted/Committed data should not be lost
+
+
+Transactions:
+
+A transaction is a sequence of operations performed (using one or more SQL statements) on a database as a single logical unit of work. The effects of all the SQL statements in a transaction can be either all committed (applied to the database) or all rolled back (undone from the database). A database transaction must be atomic, consistent, isolated and durable.
+
+Example:
+
+COMMIT:The COMMIT command is the transactional command used to save changes invoked by a transaction to the database.
+
+SQL> DELETE FROM CUSTOMERS
+   WHERE AGE = 25;
+SQL> COMMIT;
+
+ROLLBACK:The ROLLBACK command is the transactional command used to undo transactions that have not already been saved to the database.
+
+Example:
+
+SQL> DELETE FROM CUSTOMERS
+   WHERE AGE = 25;
+SQL> ROLLBACK;
+--------------------------------------------
+Execute SQL Function in C# code
+
+We can execute a function in C# using a SqlCommand object and pass a SQL-defined function in a SELECT SQL query.  
+
+SqlConnection conn=new SqlConnection(@"SQLCONNECTION STRING");
+SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.function_xyz(@username)", conn);
+// cmd.CommandType=CommandType.StoredProcedure;
+cmd.Parameters.AddWithValue("@username","username");
+SqlDataAdapter da = new SqlDataAdapter(cmd);
+DataTable dt = new DataTable();
+da.Fill(dt);
+string str = dt.Rows[0][0].ToString();
+Response.Write(str.ToString());
+
+
+
+
+
+tell me about yourself:
+
+
+“i am a self-starter with strong interpersonal skills. i work efficiently both as an individual contributor as well as along with a team. i seek new challenges and try to think out-of-the-box while looking for creative solutions to a given problem. besides the details given in my resume, i believe in character, values, vision, and action. i am a quick learner and believe in learning from my mistakes for i strongly feel that this virtue will take me ahead in life and career.”
+
+
+
