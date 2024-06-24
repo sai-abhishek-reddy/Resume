@@ -649,8 +649,25 @@ var myLinqQuery = from name in names
 foreach(var name in myLinqQuery)
     Console.Write(name + " ");
 -----------------------------------------------------
+Array:
+
+1.This has fixed size and can’t increase or decrease dynamically.
+2.Arrays belong to System.Array namespace
+3.In Arrays, we can store only one datatype either int, string, char etc.
+4.Insertion and deletion operation is fast.
+5.Arrays are strongly typed which means it can store only specific type of items or elements.
+6.Array cannot accept null.
+
+
 ArrayList:
-ArrayList is a part of collections in C#. It is used to contain data of any given data type. It is similar to an array in C# but it doesn’t have a definite size. Its size increases automatically as more elements are added in it.
+
+1.Size can be increase or decrease dynamically.
+2.ArrayList belongs to System.Collection namespace.
+3.In ArrayList we can store different datatype variables.
+4.Insertion and deletion operation in ArrayList is slower than an Array.
+5.ArrayList are not strongly typed.
+6.ArrayList can accepts null.
+
 ArrayList arrList = new ArrayList();
 //Add
 arrList.Add(7896);
