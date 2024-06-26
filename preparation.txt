@@ -144,7 +144,7 @@ using System;
        int  n, reverse=0, rem;           
        Console.Write("Enter a number: ");      
        n= int.Parse(Console.ReadLine());     
-       while(n!=0)      
+       while(n==0)      
        {      
         rem=n%10;        
         reverse=reverse*10+rem;      
@@ -166,22 +166,35 @@ public static string Reverse( string s )
 OR 
 
 using System;
-class Demo {
-   static void Main() {
-      string myStr, rev;
-      myStr = "Tom";
-      rev ="";
-      Console.WriteLine("String is {0}", myStr);
-      // find string length
-      int len;
-      len = myStr.Length - 1;
-      while (len >= 0) {
-         rev = rev + myStr[len];
-         len--;
-      }
-      Console.WriteLine("Reversed String is {0}", rev);
-      Console.ReadLine();
-   }
+
+namespace reverseString
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str = "", reverse = "";
+            int Length = 0;
+
+            Console.WriteLine("Enter a Word");
+
+            // Getting String (word) from Console
+            str = Console.ReadLine();
+
+            // Calculate length of string str
+            Length = str.Length - 1;
+
+            while (Length >= 0)
+            {
+                reverse = reverse + str[Length];
+                Length--;
+            }
+
+            // Displaying the reverse word
+            Console.WriteLine("Reverse word is {0}", reverse);
+            Console.ReadLine();
+        }
+    }
 }
 -------------------------------------------
 count of specific character in string:
@@ -218,13 +231,33 @@ using System;
       {  
        int i,fact=1,number;      
        Console.Write("Enter any Number: ");      
-       number= int.Parse(Console.ReadLine());     
+       number = int.Parse(Console.ReadLine());     
        for(i=1;i<=number;i++){      
         fact=fact*i;      
        }      
        Console.Write("Factorial of " +number+" is: "+fact);    
      }  
   }  
+------------------------------------------------------
+Fibnocci series:
+
+public static voidFibonacci_Iterative(int len)
+{
+    int a = 0, b = 1, c = 0;
+    Console.Write("{0} {1}", a,b);
+    for (int i = 2; i < len; i++)
+    {
+        c= a + b;
+        Console.Write(" {0}", c);
+        a= b;
+        b= c;
+    }
+}
+
+Output:
+
+Enter the number of elements: 15
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 
 -------------------------------------------------------
 Static class: A static class is a class that cannot be instantiated or derived from, and it is sealed by default. The keyword static is used to declare a static class. The primary purpose of a static class is to act as a container for static members, such as constants,   static fields, and static methods.
 
@@ -466,7 +499,7 @@ Access specifiers are keywords to specify the accessability of the class,method,
 * We can have only try block without catch block, but we should have finally block after try block.
 * difference between throw ex and throw is....throw will give more information about the error compared to throw ex.
 ---------------------------------------------
-* thiskeyword: this keyword is used to refer to the current instance of the class. It is used to access members from the constructors, instance methods, and instance accessors. this keyword is also used to track the instance which is invoked to perform some calculation or further processing related to that instance.
+* This keyword: this keyword is used to refer to the current instance of the class. It is used to access members from the constructors, instance methods, and instance accessors. this keyword is also used to track the instance which is invoked to perform some calculation or further processing related to that instance.
 
 // C# program for using 'this' keyword to
 // refer current class instance members
@@ -553,14 +586,14 @@ We can create a default constructor.
 Serialization: it is the process of converting object to binary formate(bytes). EX:database, file,memory.Once it is conveeted to bytes,it can be easily stored and written to a disk or any such storage devices.
 - JsonConvert.SerializeObject(empclass)
 -------------------------------------------------
-delegates: 
+Delegates: 
 
 - It is a variable that holds the reference to a method or pointer to a method.
 - It can refer to more than one methods of same return type and parameters(must be same for all the methods)
 
-When to use:
+Why do we need delegates in C#?
+developers often need to pass a method as a parameter of other methods when dealing with events. For this purpose, we create and use delegates in C#. A delegate is a class that encapsulates a method signature.
 
-When we need to pass method as a parameter then we will use delegates
 2 types(single cast,multi cast)
 used 2 ways
 ----event delegation model:publition(publishes event) and subscriber(handle events).
@@ -690,35 +723,15 @@ String value3 = (string)hashtbl[8];
 ------------------------------------------------
 Extension Method:
 
-Extension methods are special static methods that can be called as if they were instance methods of an existing type. They are a convenient way to add new methods to an existing class without changing the original source code or inheriting from the class.
-To create an extension method, you need to define a static method inside a static class. The first parameter of the method should be the type you want to extend, prefixed with this keyword. This special keyword tells the C# compiler that this is an extension method.
-First, let's create a new static class called StringExtensions. The class name is not important, but it's a common convention to use the name of the type being extended followed by "Extensions". Inside this class, we'll define a static method called Reverse:
-
+Extension methods enable you to "add" methods to existing types without creating a new derived type, recompiling, or otherwise modifying the original type. Extension methods are static methods, but they're called as if they were instance methods on the extended type. 
  
-public static class StringExtensions
-{
-    public static string Reverse(this string input)
-    {
-        char [] chars = input.ToCharArray();
-        Array.Reverse(chars);
-        return new string(chars);
-    }
-}
-In this example, we created a public static string method called Reverse with a single parameter. The this keyword before the string type indicates that this is an extension method for the string class.
-
-Now, let's see how to use this new extension method in our Program class:
-
- 
-class Program
-{
-    static void Main(string [] args)
-    {
-        string example = "Hello, World!";
-        string reversed = example.Reverse();
-        Console.WriteLine(reversed); // !dlroW ,olleH
-    }
-}
-Notice that we didn't have to create an instance of the StringExtensions class. Instead, we used the Reverse method directly on the string instance as if it were an instance method.
+The most common extension methods are the LINQ standard query operators that add query functionality to the existing System.Collections.IEnumerable and System.Collections.Generic.IEnumerable<T> types.
+----------------------------------------
+What is Dependency Injection?
+Dependency injection is a software design pattern that implements inversion of control for resolving dependencies. A dependency is an object that can be used (a service). An injection is the passing of a dependency to a dependent object (a client) that would use it.
+1.Constructor Injection : The constructor injection normally has only one parameterized constructor, so in this constructor dependency there is no default constructor and we need to pass the specified value at the time of object creation. 
+2.Property Injection : We use constructor injection, but there are some cases where I need a parameter-less constructor so we need to use property injection
+3.Method Injection : In method injection we need to pass the dependency in the method only. The entire class does not need the dependency, just the one method
 --------------------------------------------------------
 Solid Principles: These are set of principles which must be followed to develop flexible,maintainable and scalable software systems. 
 		  -These are not concreat(can be acheived in multiple ways.)
@@ -743,7 +756,7 @@ D - Dependancy Inversion Principle	- states that a high-level class must not dep
 MVC: It is a framework for building web applications.
 
 Model  		- A model is a class that contains the business logic of the application. It also used for accessing data from the database.
-View		-The MVC View is a standard HTML page that may contain script. It is used to create web pages for the application. Unlike 			 ASP.NET Web Pages, MVC Views are mapped to the action and then controller renders the view to the browse
+View		-The MVC View is a standard HTML page that may contain script. It is used to create web pages for the application. Unlike 			 ASP.NET Web Pages, MVC Views are mapped to the action and then controller renders the view to the browser
 controller	- acts as an interface between model and view components to process all the buisiness logic and render the final output to view.
 
 
@@ -805,6 +818,16 @@ public ActionResult Index()
 {
 }
 -------------------------------------------------------
+Exception Handling in MVC
+In ASP.NET MVC we have a larger list of ways to handle exceptions such as,
+
+Try-catch-finally
+Overriding OnException method
+Using the [HandleError] attribute on actions and controllers
+Setting a global exception-handling filter
+Handling Application_Error event
+Extending HandleErrorAttribute
+-------------------------------------------------------
 
 viewbag in asp.net mvc is used to transfer temporary data (which is not included in the model) from the controller to the view.internally, it is a dynamic type property of the controllerbase class which is the base class of the controller class.doesn't requires typecasting for complex datatypes
 
@@ -835,6 +858,21 @@ Security in web applications in MVC:
 ---------------------------------------
 Routing:
 ASP.NET MVC routing is a pattern matching system that is responsible for mapping incoming browser requests to specified MVC controller actions.ASP.NET introduced Routing to eliminate the needs of mapping each URL with a physical file. Routing enables us to define a URL pattern that maps to the request handler. This request handler can be a file or class. In ASP.NET Webform application, request handler is .aspx file, and in MVC, it is the Controller class and Action method.
+
+In Folder App_Start, in RouteConfig.cs class, in method RegisterRouts, we will define routing. we will define our default route in routes.MapRoute(name:"",url:"",defaults:)
+--------------------------------------
+Available HTML Helpers:
+
+ActionLink — Links to an action method.
+BeginForm  — Marks the start of a form and links to the action method that renders the form.
+CheckBox  — Renders a check box.
+DropDownList  — Renders a drop-down list.
+Hidden — Embeds information in the form that is not rendered for the user to see.
+ListBox — Renders a list box.
+Password — Renders a text box for entering a password.
+RadioButton  — Renders a radio button.
+TextArea — Renders a text area (multi-line text box).
+TextBox  — Renders a text box.
 ------------------------------------------------------------------------------------------------------------------------------------------------
 								ADO.NET/Entity Framework
 
@@ -870,32 +908,17 @@ Model first approach	- model classes and their relation is created first using O
  -----------------------------------------------
 Media Type Formatters:
 In web API, media type formatters are classes that are responsible for serialization data. Here, serialization generally means a process of translating data into a format that can be transmitted and reconstructed later.  Because of serializing request/response data, Web API can understand request data format in a better way and send data in a format that the client expects. It simply specifies data that is being transferred among client and server in HTTP response or request. 
-------------------------------------------
-
-What is Collect and ClearCollect in PowerApps?
-The Collect function adds records to a data source. The items to be added can be:
-A single value: The value is placed in the Value field of a new record. All other properties are left blank.
-A record: Each named property is placed in the corresponding property of a new record. All other properties are left blank.
-A table: Each record of the table is added as a separate record of the data source as described above. The table isn’t added as a nested table to a record. To do this, wrap the table in a record first.
-
-The ClearCollect function deletes all the records from a collection. And then adds a different set of records to the same collection. With a single function, ClearCollect offers the combination of Clear and then Collect.
-ClearCollect returns the modified collection as a table. ClearCollect can only be used in a behavior formula.
---------------------------------------------
+------------------------------------------------
 Why private constructor is used ?
 Private Constructors are used to restrict the instantiation of object using 'new' operator. It is commonly used in classes that contain static members only.If you don't want the class to be inherited we declare its constructor private.This type of constructors is mainly used for creating singleton object.
 ------------------------------------------
 What is the difference between TempData keep() and peek() function?
 temdata uses TempDataDictionary where every data read, will be marked as available for deletion, keep() and peek() both are used to retain data, the only difference is, keep() will be used to retain data that has been marked for deletion (Read and Keep), whereas peek() will be used where you want to read data without marking it for deletion.
-----------------------------------------
-What is Dependency Injection?
-Dependency injection is a software design pattern that implements inversion of control for resolving dependencies. A dependency is an object that can be used (a service). An injection is the passing of a dependency to a dependent object (a client) that would use it.
-1.Constructor Injection : The constructor injection normally has only one parameterized constructor, so in this constructor dependency there is no default constructor and we need to pass the specified value at the time of object creation. 
-2.Property Injection : We use constructor injection, but there are some cases where I need a parameter-less constructor so we need to use property injection
-3.Method Injection : In method injection we need to pass the dependency in the method only. The entire class does not need the dependency, just the one method
+
 ------------------------------------------------------------------------------------------------------------------------------------------------
 								WEB API
 
-Web API	- API stands for Application Programming Interface. It is an intermediate software agent that allows two or more applications to 		  interact with each other.
+Web API	- Web API is a programming interface/application type that provides communication or interaction between software applications. Web API 	  is often used to provide an interface for websites and client applications to have data access. Web APIs can be used to access data  	  	  from a database and save data back to the database.
 
 Web API advantages over WCF:
 
@@ -904,7 +927,7 @@ Web API advantages over WCF:
 3.it is lightweight architecture and it is good for devices which have limited bandwidth(JSON, XML are lightweight).
 4.it has very easy configuration settings.
 ------------------------------------------------
-REST: Representational state transfet - is a set of guidlines which helps in creating a system where applications can easily communicate with   	each other.
+REST: Representational state transfer - is a set of guidlines which helps in creating a system where applications can easily communicate with   	each other.
 RESTFULL: If an API or WCF is following REST guidlines then it is called RESTFULL API.
 
 REST Guidlines:
@@ -927,8 +950,6 @@ GET - with parameter
 POST - create new resource
 PUT - Update existing resource
 DELETE - delete resource
-------------------------------------------------
-POST vs PUT in getting list
 ------------------------------------------------
 Web API controller vs MVC controller.
 
@@ -958,16 +979,16 @@ API Key Authentication: the API owner will share the API key with the users and 
 
 Token based Auth: 4 steps
 
-1.Client application first sends a request to authenticationserver with valid cred.
+1.Client application first sends a request to authentication server with valid cred.
 2.The Auth server/Web api will send an access token to client as a response.this token will have all data about particular user with expiry time.
 3.The client application then uses this token to access the restricted resources in the next requests untill token is valid.
 4.If access token is expired, then the client application can request for new token by using refresh token.
 
 * OAUTH is a standard for creating token based authentication and authorization.
 ------------------------------------------------
-JWT - JSON Web Tokens Authentication: it is atoken based authentication whete JWT is a token formate.
+JWT - JSON Web Tokens Authentication: it is atoken based authentication where JWT is a token formate.
 
-1.from browser will seend username and password.
+1.from browser will send username and password.
 2.server will create JWT with secret and this token is sent back to browser.
 3.again request sent from browser and JWT token will be present in Authorization header.
 4.Now, Server checkes the JWT signature gets user info from JWT
@@ -977,7 +998,14 @@ JWT - JSON Web Tokens Authentication: it is atoken based authentication whete JW
 
 *JWT token resides in the request header where Key:Authorization and Value: Bearer token.
 
-*Sync is a single-thread, so only one operation or program will run at a time. Async is non-blocking, which means it will send multiple requests to a server. Sync is blocking — it will only send the server one request at a time and wait for that request to be answered by the server.
+*Sync is a single-thread, so only one operation or program will run at a time. 
+*Async is non-blocking, which means it will send multiple requests to a server. Sync is blocking — it will only send the server one request at a  	time and wait for that request to be answered by the server.
+
+*async and await. Inside an async function, you can use the await keyword before a call to a function that returns a promise. This makes the code wait at that point until the promise is settled, at which point the fulfilled value of the promise is treated as a return value, or the rejected value is thrown.
+-----------------------------------------------
+Exception handling:
+1.In Program. cs , call UseExceptionHandler to add the Exception Handling Middleware: var app = builder. Build(); app. UseHttpsRedirection(); if  	(! app. Environment. ...
+2.Configure a controller action to respond to the /error route: [Route("/error")] public IActionResult HandleError() => Problem();
 ------------------------------------------------------------------------------------------------------------------------------------------------
 									.NET CORE
 
@@ -1049,6 +1077,13 @@ ASP.NET core MVC request life cycle:
 														     |	    |
 											Response	<----	    View result	  Data result	
 
+-----------------------------------------------
+Routing in ASP.NET core:
+
+Routing in ASP.NET Core is the process of matching incoming HTTP requests to controller actions and determining which action should handle the request. It plays a vital role in URL mapping and directing requests to the appropriate endpoints. The ASP.NET Core routing system uses route templates to define patterns for URLs.
+
+app.UseRouting() configures the middleware to enable routing.
+endpoints.MapControllerRoute defines a default route that specifies the controller, action, and an optional ID.
 -----------------------------------------------
 Metapackage - this package is automatically added in asp.net core application whenever we create. It includes all dependencies and no need to include each one in namespace.
 ----------------------------------------
@@ -1136,6 +1171,13 @@ Constraint in SQL: it is used to specify rules for data in the table. Can limit 
 * Primary key creates clustered index							 cretates Non clustered index
 * One Primary key is present in a table							 More than one Unique key in a table.
 -------------------------------------------
+DDL: Create, Drop, Alter, Truncate.
+DML: Insert, Update, Delete
+DCL: Grant, Revoke
+TCL: Commit, Rollback
+DQL: Select
+
+
 Difference between DELETE, TTRUNCATE and DROP.
 
 DELETE: it is DML, It is used to delete one or more rows from table. It can be roll back.
@@ -1310,15 +1352,108 @@ DataTable dt = new DataTable();
 da.Fill(dt);
 string str = dt.Rows[0][0].ToString();
 Response.Write(str.ToString());
+-------------------------------------------
+Remove duplicate rows from sql
 
+    
+    Insert into Employee ([FirstName],[LastName],[Country] )values('Raj','Gupta','India'),
+                                ('Raj','Gupta','India'),
+                                ('Mohan','Kumar','USA'),
+                                ('James','Barry','UK'),
+                                ('James','Barry','UK'),
+                                ('James','Barry','UK')
+In the table, we have a few duplicate records, and we need to remove them.
 
+SQL delete duplicate Rows using Group By and having clause
+In this method, we use the SQL GROUP BY clause to identify the duplicate rows. The Group By clause groups data as per the defined columns and we can use the COUNT function to check the occurrence of a row.
 
+For example, execute the following query, and we get those records having occurrence greater than 1 in the Employee table.
 
+SELECT [FirstName], 
+    [LastName], 
+    [Country], 
+    COUNT(*) AS CNT
+FROM [SampleDB].[dbo].[Employee]
+GROUP BY [FirstName], 
+      [LastName], 
+      [Country]
+HAVING COUNT(*) > 1;
+Sample data
+In the output above, we have two duplicate records with ID 1 and 3.
 
-tell me about yourself:
+Emp ID 1 has two occurrences in the Employee table
+Emp ID 3 has three occurrences in the Employee table
+We require to keep a single row and remove the duplicate rows. We need to remove only duplicate rows from the table. For example, the EmpID 1 appears two times in the table. We want to remove only one occurrence of it.
 
+We use the SQL MAX function to calculate the max id of each data row.
 
-“i am a self-starter with strong interpersonal skills. i work efficiently both as an individual contributor as well as along with a team. i seek new challenges and try to think out-of-the-box while looking for creative solutions to a given problem. besides the details given in my resume, i believe in character, values, vision, and action. i am a quick learner and believe in learning from my mistakes for i strongly feel that this virtue will take me ahead in life and career.”
+SELECT *
+    FROM [SampleDB].[dbo].[Employee]
+    WHERE ID NOT IN
+    (
+        SELECT MAX(ID)
+        FROM [SampleDB].[dbo].[Employee]
+        GROUP BY [FirstName], 
+                 [LastName], 
+                 [Country]
+    );
+In the following screenshot, we can see that the above Select statement excludes the Max id of each duplicate row and we get only the minimum ID value.
 
+identify duplicate data To remove this data, replace the first Select with the SQL delete statement as per the following query.
 
+DELETE FROM [SampleDB].[dbo].[Employee]
+    WHERE ID NOT IN
+    (
+        SELECT MAX(ID) AS MaxRecordID
+        FROM [SampleDB].[dbo].[Employee]
+        GROUP BY [FirstName], 
+                 [LastName], 
+                 [Country]
+    );
+Once you execute the delete statement, perform a select on an Employee table, and we get the following records that do not contain duplicate rows.
 
+SQL Delete duplicate rows
+SQL delete duplicate Rows using Common Table Expressions (CTE)
+We can use Common Table Expressions commonly known as CTE to remove duplicate rows in SQL Server. It is available starting from SQL Server 2005.
+
+We use a SQL ROW_NUMBER function, and it adds a unique sequential row number for the row.
+
+In the following CTE, it partitions the data using the PARTITION BY clause for the [Firstname], [Lastname] and [Country] column and generates a row number for each row.
+
+Using CTE:
+
+WITH CTE([firstname], 
+    [lastname], 
+    [country], 
+    duplicatecount)
+AS (SELECT [firstname],[lastname],[country], ROW_NUMBER() OVER(PARTITION BY [firstname],[lastname], [country]
+           ORDER BY id) AS DuplicateCount
+    FROM [SampleDB].[dbo].[employee])
+
+DELETE FROM CTE Where duplicatecount > 1;
+In the output, if any row has the value of [DuplicateCount] column greater than 1, it shows that it is a duplicate row.
+
+Using Having: 
+
+SELECT [FirstName],[LastName],[Country], COUNT(*) AS CNT
+FROM [SampleDB].[dbo].[Employee]
+GROUP BY [FirstName],[LastName], [Country]
+HAVING COUNT(*) > 1;
+------------------------------------------------
+Find Nth Highest salary	is SQL.
+
+Here we will look for the 3rd highest salary in the employee table.
+
+select name, salary from employee order by salary DESC LIMIT 2,1
+
+Another approach
+
+Using DENSE_RANK() function: 
+The DENSE_RANK() function is used to compute the rank of a row within an ordered group of rows. It returns the rank of the row specified. The ranking in the DENSE_RANK() function is integer values starting from 1.
+
+Here, we will query for the 3rd highest salary in the employee table.
+
+SELECT * FROM(
+SELECT emp_name, salary, DENSE_RANK() 
+over(ORDER BY salary DESC) AS ranking FROM employee) AS k
+WHERE ranking=3;
